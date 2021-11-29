@@ -1,0 +1,15 @@
+{% from 'events/layout/_menu.html' import menu_entry_display %}
+
+{% macro render_leftnav(menu) %}
+<div class="conf_leftMenu">
+    <ul id="outer">
+      {% for entry in menu if entry.is_visible %}
+      {% if entry.title == "LPC blog" %}
+      {{ menu_entry_display(entry, active_entry_id=entry.id) }}
+      {% else %}
+      {{ menu_entry_display(entry) }}
+      {% endif %}
+      {% endfor %}
+    </ul>
+</div>
+{% endmacro %}
