@@ -11,6 +11,7 @@ from indico.modules.events.controllers.admin import (RHCreateEventLabel, RHCreat
 from indico.modules.events.controllers.api import RHEventCheckEmail, RHSingleEventAPI
 from indico.modules.events.controllers.creation import RHCreateEvent, RHPrepareEvent
 from indico.modules.events.controllers.display import RHDisplayPrivacyPolicy, RHEventAccessKey, RHExportEventICAL
+from indico.modules.events.controllers.display import RHExportEventLeftnav
 from indico.modules.events.controllers.entry import event_or_shorturl
 from indico.web.flask.util import make_compat_redirect_func, redirect_view
 from indico.web.flask.wrappers import IndicoBlueprint
@@ -39,6 +40,10 @@ _bp.add_url_rule('/admin/event-labels/<int:event_label_id>', 'delete_event_label
                  methods=('DELETE',))
 
 _bp.add_url_rule('/event/<int:event_id>/event.ics', 'export_event_ical', RHExportEventICAL)
+
+_bp.add_url_rule('/event/<confId>/leftnav.html', 'export_event_leftnav', RHExportEventLeftnav)
+
+_bp.add_url_rule('/event/<confId>/leftnav.html', 'export_event_leftnav', RHExportEventLeftnav)
 
 # Creation
 _bp.add_url_rule('/event/create/<any(lecture,meeting,conference):event_type>', 'create', RHCreateEvent,

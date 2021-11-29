@@ -15,12 +15,20 @@ from indico.modules.events.controllers.base import RHDisplayEventBase, RHEventBa
 from indico.modules.events.ical import CalendarScope, event_to_ical, events_to_ical
 from indico.modules.events.layout.views import WPPage
 from indico.modules.events.management.settings import privacy_settings
+from indico.modules.events.layout.util import menu_entries_for_event
 from indico.modules.events.models.events import EventType
 from indico.modules.events.util import get_theme
 from indico.modules.events.views import WPConferenceDisplay, WPConferencePrivacyDisplay, WPSimpleEventDisplay
 from indico.web.args import use_kwargs
 from indico.web.flask.util import send_file, url_for
+from indico.web.flask.templating import get_template_module
 from indico.web.rh import allow_signed_url
+
+
+class RHExportEventLeftnav(RHDisplayEventBase):
+    def _process(self):
+        tpl = get_template_module('events/layout/_leftnav.html')
+        return tpl.render_leftnav(menu_entries_for_event(self.event))
 
 
 @allow_signed_url

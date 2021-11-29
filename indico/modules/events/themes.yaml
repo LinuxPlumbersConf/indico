@@ -91,3 +91,10 @@ definitions:
             - [sunday, Sunday]
         defaults:
             monday
+
+  lpc:
+    event_types: [conference, meeting]
+    stylesheet: indico.scss
+    template: lpc.html
+    title: Compact style
+    user_visible: true
