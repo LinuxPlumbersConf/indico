@@ -684,6 +684,7 @@ class SetupWizard:
             _copy(os.path.join(package_root, 'web', 'indico.wsgi'),
                   os.path.join(self.data_root_path, 'web', 'indico.wsgi'),
                   force=True)
+            _link(os.path.join(package_root, 'lpc'), os.path.join(self.data_root_path, 'lpc'))
 
         if create_config_link:
             _link(self.config_path, config_link_path)

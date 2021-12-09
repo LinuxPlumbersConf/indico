@@ -1,0 +1,109 @@
+{#- Base template for indico pages (standard "indico look") -#}
+<!DOCTYPE html>
+
+<html prefix="og: http://ogp.me/ns#"
+      data-static-site="{{ g.get('static_site', false)|tojson|forceescape }}">
+<head>
+    <title>
+        {%- if page_title %}{{ page_title }} · {% endif %}
+        {{- site_name -}}
+        {% if site_name != 'Indico' %} (Indico){% endif -%}
+    </title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- if page_title and (page_title.find('X.Org') >= 0) %}
+    <meta property="og:title" content="X.Org Developers Conference 2019" />
+    <meta property="og:image" content="https://linuxplumbersconf.org/blog/2019/style/XDC2019.jpg" />
+    <meta property="og:description" content="The X.Org Developer's Conference 
+	  2019 is the event for developers working on all things Open
+	  Source graphics (Linux kernel, Mesa, DRM, Wayland, X11, etc.)."  />
+    {% elif page_title and (page_title.find("X.Org Developers Conference 2020") >= 0) %}
+    <meta property="og:title" content="X.Org Developers Conference 2020" />
+    <meta property="og:image" content="https://www.linuxplumbersconf.org/blog/2020/wp-content/uploads/2020/05/xdc2020-banner.png" />
+    <meta property="og:description" content="The X.Org Developer's Conference
+          2020 is the event for developers working on all things Open
+          Source graphics (Linux kernel, Mesa, DRM, Wayland, X11, etc.)."  />
+    {% elif page_title and (page_title.find("Linux Plumbers Conference 2020") >= 0) %}
+    <meta property="og:title" content="Linux Plumbers Conference 2020" />
+    <meta property="og:image" content="https://www.linuxplumbersconf.org/blog/2020/style/thumbnail.jpg" />
+    <meta property="og:description" content="The Linux Plumbers Conference
+          (LPC) is a developer conference for the open source community. The LPC
+          brings together the top developers working on the plumbing of Linux -
+          kernel subsystems, core libraries, windowing systems, etc. - and gives them
+          three days to work together on core design problems. The conference is
+          divided into several working sessions focusing on different plumbing
+          topics, as well as a general paper track." />
+    {% else %}
+    <meta property="og:title" content="Linux Plumbers Conference 2019" />
+    <meta property="og:image" content="https://blog.linuxplumbersconf.org/2019/style/thumbnail.jpg" />
+    <meta property="og:description" content="The Linux Plumbers Conference
+          (LPC) is a developer conference for the open source community. The LPC
+	  brings together the top developers working on the plumbing of Linux -
+	  kernel subsystems, core libraries, windowing systems, etc. - and gives them
+	  three days to work together on core design problems. The conference is
+	  divided into several working sessions focusing on different plumbing
+	  topics, as well as a general paper track." />
+    {% endif -%}
+    <meta name="csrf-token" id="csrf-token" content="{{ session.csrf_token }}">
+<!--
+    <link rel="shortcut icon" type="image/x-icon" href="https://lwn.net/images/lpc-favicon.ico">
+-->
+
+    <meta property="og:site_name" content="{{ site_name }}{% if site_name != 'Indico' %} (Indico){% endif %}">
+    {% if social.facebook_app_id -%}
+        <meta property="fb:app_id" content="{{ social.facebook_app_id }}">
+    {% endif %}
+
+    <script>
+        window.CKEDITOR_BASEPATH = {{ url_for('assets.js', filename='lib/ckeditor/')|tojson() }};
+    </script>
+
+    <script type="text/javascript" src="{{ url_for('assets.i18n_locale', locale_name=session.lang) }}"></script>
+    <script type="text/javascript" src="{{ url_for('assets.js_vars_global') }}"></script>
+
+    {% for url in js_files -%}
+        <script type="text/javascript" src="{{ url }}"></script>
+    {% endfor %}
+
+    <script>
+        moment.locale({{ session.lang|tojson }});
+        IndicoGlobalVars.isUserAuthenticated = {{ session.user|bool|tojson }};
+    </script>
+
+    <script type="text/javascript" src="{{ url_for('assets.js_vars_user') }}"></script>
+
+    {{ head_content|safe }}
+
+    {% for url in css_files -%}
+        <link rel="stylesheet" type="text/css" href="{{ url }}">
+    {% endfor %}
+
+    {% for url in print_css_files -%}
+        <link rel="stylesheet" type="text/css" media="print" href="{{ url }}">
+    {% endfor %}
+
+    {{ template_hook('html-head') }}
+</head>
+<body data-user-id="{{ session.user.id if session.user else 'null' }}"
+      data-debug="{{ config.DEBUG|tojson|forceescape }}">
+    {#-
+    XXX: Using a block and inheritance would be nicer but for now this
+    is only called from a WP so just passing the contents is much easier
+    #}
+    {{ body|safe }}
+</body>
+</html>
+{%- set req_stats = get_request_stats() %}
+<!--
+Queries:         {{ req_stats.query_count }}
+Duration (sql):  {{ '%.06fs'|format(req_stats.query_duration) }}
+Duration (req):  {{ '%.06fs'|format(req_stats.req_duration) }}
+{%- if session.user and session.user.is_admin %}
+Worker:          {{ indico_config.WORKER_NAME }}
+{%- endif %}
+Endpoint:        {{ request.endpoint }}
+{%- if g.rh %}
+RH:              {{ g.rh.__class__.__module__ }}.{{ g.rh.__class__.__name__ }}
+{%- endif %}
+-->

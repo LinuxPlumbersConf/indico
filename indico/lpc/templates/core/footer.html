@@ -1,0 +1,12 @@
+<div class="footer {{ 'dark' if dark }}">
+    {% block footer -%}
+        <center>
+          Powered by <a href="https://getindico.io">Indico</a><br>
+	  Hosting donated by <a href="https://lwn.net/">LWN.net</a><br>
+	</center>
+    {% endblock %}
+</div>
+
+{% include '_outdated_browser.html' %}
+
+{{- g.get('injected_js', []) | join('\n') | safe -}}

@@ -6,6 +6,7 @@ graft indico/core/plugins/alembic/
 graft indico/migrations/
 graft indico/translations/
 graft indico/web/static
+graft indico/lpc/
 prune indico/web/client
 prune indico/htdocs
 include indico/legacy/pdfinterface/texmf.cnf
