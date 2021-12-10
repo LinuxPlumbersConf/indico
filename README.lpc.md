@@ -45,6 +45,7 @@
 
   ```
   psql  -d indico -U indico -f /path/to/indico.sql
+  indico db upgrade
   ```
 
 * Extract the old site archive:
