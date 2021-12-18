@@ -189,7 +189,7 @@
 		    {{ rows.__setitem__(open.object.id, rows[open.object.id] + 1) or "" }}
 		{%- endif -%}
 		{{ starts[start].__setitem__(open.object.room_name, "skip") or "" }}
-<!-- {{ open.object.id }} {{rows[open.object.id]}} -->
+                {# open.object.id }} {{rows[open.object.id]}} #}
 		{{ stillopen.append(open) or "" }}
 	    {% endif %}
 	{% endfor %}
