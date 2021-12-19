@@ -41,9 +41,9 @@ _bp.add_url_rule('/admin/event-labels/<int:event_label_id>', 'delete_event_label
 
 _bp.add_url_rule('/event/<int:event_id>/event.ics', 'export_event_ical', RHExportEventICAL)
 
-_bp.add_url_rule('/event/<confId>/leftnav.html', 'export_event_leftnav', RHExportEventLeftnav)
+_bp.add_url_rule('/event/<int:event_id>/leftnav.html', 'export_event_leftnav', RHExportEventLeftnav)
 
-_bp.add_url_rule('/event/<confId>/leftnav.html', 'export_event_leftnav', RHExportEventLeftnav)
+_bp.add_url_rule('/event/<int:event_id>/leftnav.html', 'export_event_leftnav', RHExportEventLeftnav)
 
 # Creation
 _bp.add_url_rule('/event/create/<any(lecture,meeting,conference):event_type>', 'create', RHCreateEvent,
