@@ -11,6 +11,30 @@
     </title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {%- if page_title and (page_title.find("Linux Plumbers Conference") >= 0) %}
+    <meta property="og:description" content="The Linux Plumbers Conference
+          (LPC) is a developer conference for the open source community. The LPC
+	  brings together the top developers working on the plumbing of Linux -
+	  kernel subsystems, core libraries, windowing systems, etc. - and gives them
+	  three days to work together on core design problems. The conference is
+	  divided into several working sessions focusing on different plumbing
+	  topics, as well as a general paper track." />
+    {% endif -%}
+
+    {%- if page_title and (page_title.find("Linux Plumbers Conference 2021") >= 0) %}
+      <meta property="og:title" content="Linux Plumbers Conference 2021" />
+      <meta property="og:image" content="https://www.linuxplumbersconf.org/blog/2021/style/thumbnail.jpg" />
+    {%- elif page_title and (page_title.find("Linux Plumbers Conference 2020") >= 0) %}
+      <meta property="og:title" content="Linux Plumbers Conference 2020" />
+      <meta property="og:image" content="https://blog.linuxplumbersconf.org/2020/style/thumbnail.jpg" />
+    {%- elif page_title and (page_title.find("Linux Plumbers Conference 2019") >= 0) %}
+      <meta property="og:title" content="Linux Plumbers Conference 2019" />
+      <meta property="og:image" content="https://blog.linuxplumbersconf.org/2019/style/thumbnail.jpg" />
+    {% else %}
+    {% endif -%}
+
     <meta name="csrf-token" id="csrf-token" content="{{ session.csrf_token }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ indico_config.IMAGES_BASE_URL }}/indico.ico">
 
