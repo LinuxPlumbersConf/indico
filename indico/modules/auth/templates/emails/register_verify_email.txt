@@ -1,23 +1,27 @@
 {% extends 'emails/base_i18n.txt' %}
 
 {% block subject -%}
-    {% trans %}Verify your email{% endtrans %}
+    {% trans %}Verify your email to create your LPC account{% endtrans %}
 {%- endblock %}
 
 {% block header_recipient -%}
-    {% trans %}Dear user,{% endtrans %}
+    {% trans %}Linux Plumbers Conference participant{% endtrans %}
 {%- endblock %}
 
 {% block body -%}
-{% filter dedent -%}
-    {%- filter wordwrap(width=81, break_long_words=false) -%}
-        {%- trans -%}
-            You started the Indico profile creation process. To continue, you need to verify
-            that {{ email }} is indeed your email address.
-        {%- endtrans -%}
-    {%- endfilter %}
+{%- trans notrimmed -%}
+You have started the process of creating an account on the
+Linux Plumbers Conference system.  To continue, you need to verify
+that {{ email }} is indeed your email address.
+Please click the following link to continue the registration process:
 
-    {% trans %}Please click the following link to continue the registration process:{% endtrans %}
+{#
+ # You started the Indico profile creation process.  To continue, you need to verify
+ # that {{ email }} is indeed your email address.
+
+ # Please click the following link to continue the registration process:
+ #}
+{%- endtrans %}
 
     {{ url }}
 {%- endfilter -%}
