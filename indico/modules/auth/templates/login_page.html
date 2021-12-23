@@ -6,7 +6,7 @@
     <div class="centered-column">
         {% if active_provider %}
             <div class="login-container clearfix">
-                <img class="header-logo" src="{{ indico_config.IMAGES_BASE_URL }}/logo_indico.png">
+                <img class="header-logo" src="{{ indico_config.IMAGES_BASE_URL }}/logo_lpc.png">
                 {% if login_reason %}
                     <div class="login-reason-box">
                         {{ login_reason }}
@@ -44,7 +44,7 @@
             {% endif %}
         {% else %}
             <div class="login-container clearfix">
-                <img class="header-logo" src="{{ indico_config.IMAGES_BASE_URL }}/logo_indico.png">
+                <img class="header-logo" src="{{ indico_config.IMAGES_BASE_URL }}/logo_lpc.png">
                 {% include 'flashed_messages.html' %}
             </div>
         {% endif %}
