@@ -10,21 +10,21 @@
                 {%- if can_submit_abstracts %}
                     <div class="label">
                         {% if cfa.is_open %}
-                            {%- trans %}The call for abstracts is open{% endtrans -%}
+                            {%- trans %}The call for proposals is open{% endtrans -%}
                         {% else %}
-                            {%- trans %}You have been authorized to submit abstracts{% endtrans -%}
+                            {%- trans %}You have been authorized to submit proposals{% endtrans -%}
                         {% endif %}
                     </div>
                     <div>
-                        {%- trans %}You can submit an abstract for reviewing.{% endtrans -%}
+                        {%- trans %}You can submit a proposal for reviewing.{% endtrans -%}
                     </div>
                 {% elif is_future %}
                     <div class="label">{% trans %}The call for abstracts is not open yet.{% endtrans %}</div>
                 {% else %}
-                    <div class="label">{% trans %}The call for abstracts is closed.{% endtrans %}</div>
+                    <div class="label">{% trans %}The call for proposals is closed.{% endtrans %}</div>
                     {% if cfa.modification_end_dt and not cfa.modification_ended and abstracts %}
                         <div>
-                            {%- trans %}You may still modify your abstracts.{% endtrans -%}
+                            {%- trans %}You may still modify your proposals.{% endtrans -%}
                         </div>
                     {% endif %}
                 {% endif -%}
