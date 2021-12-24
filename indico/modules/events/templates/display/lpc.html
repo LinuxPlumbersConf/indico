@@ -1,0 +1,51 @@
+{% extends 'layout/conference_page_base.html' %}
+
+{% from 'events/display/_event_header_message.html' import render_event_header_msg %}
+{% from 'events/display/conference/_util.html' import format_event_date %}
+{# {% from 'events/layout/_menu.html' import menu_entry_display %} #}
+
+{% block page %}
+    <div class="conf clearfix" itemscope itemtype="http://schema.org/Event">
+        <div class="confheader clearfix">
+            <div class="confTitleBox clearfix">
+                <div class="confTitle">
+                    <h1>
+                        <a href="{{ event.url }}">
+                            <span class="conference-title-link">
+                                {% if event.has_logo %}
+                                    <div class="confLogoBox">
+                                       <img src="{{ event.logo_url }}" alt="{{ event.title }}" border="0" class="confLogo">
+                                    </div>
+                                {% endif %}
+                                <span itemprop="title">{{ event.title }}</span>
+                            </span>
+                        </a>
+                    </h1>
+               </div>
+            </div>
+            <div class="confSubTitleBox">
+                <div class="confSubTitleContent flexrow">
+                    <div class="confSubTitle f-self-stretch">
+                        {{ template_hook('conference-header', event=event) }}
+                        <div class="datePlace">
+                            <div class="date">
+                                {{- format_event_date(event) -}}
+                                {{- event.get_label_markup() -}}
+                            </div>
+                            <div class="place">{{ event.venue_name }}</div>
+                            <div class="timezone">
+                                {%- trans tz=event.display_tzinfo.zone %}{{ tz }} timezone{% endtrans -%}
+                            </div>
+                        </div>
+                    </div>
+                    {% if event.can_access(session.user) %}
+                        {{ template_hook('conference-header-right-column', event=event) }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+	<center>
+            {{ template_hook('meeting-body', event=event) }}
+	</center>
+    </div>
+{% endblock %}
