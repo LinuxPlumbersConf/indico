@@ -5,7 +5,7 @@
 {% from 'events/layout/_menu.html' import menu_entry_display %}
 
 {% block page %}
-    <div class="conf clearfix">
+    <div class="conf clearfix" itemscope itemtype="http://schema.org/Event">
         <div class="confheader clearfix" style="{{ conf_layout_params.bg_color_css }}">
             <div class="confTitleBox clearfix" style="{{ conf_layout_params.bg_color_css }}">
                 <div class="confTitle">
@@ -55,6 +55,9 @@
             {% include 'flashed_messages.html' %}
             {{ render_event_header_msg(event, meeting=false) }}
             {% set visible_menu_entries = conf_layout_params.menu | selectattr('is_visible') | list %}
+	    <input type="checkbox" checked class="LeftMenuCtrl"
+		   id="LeftMenuCtrl">
+	    <label class="LeftMenuCtrl" for="LeftMenuCtrl"></label>
             <div class="conf_leftMenu">
                 {% if visible_menu_entries %}
                     <ul id="outer">
@@ -85,13 +88,23 @@
                     </div>
                 {%- endif %}
             </div>
-            <div class="confBodyBox clearfix {{ 'event-locked' if event.is_locked }}">
+
+            {#
+             # LPC: remove clearfix from the confBodyBox styles to have
+             # sponsors in a right panel
+             #}
+            <div class="confBodyBox {{ 'event-locked' if event.is_locked }}">
                 <div class="mainContent">
                     <div class="col2">
                         {{ super() }}
                     </div>
                 </div>
             </div>
+
+	    <div class="SponsorBox">
+	        {%- set sponsorfn = ('sponsors/%d.html' % event.id) -%}
+		{% include sponsorfn ignore missing %}
+	    </div>
         </div>
         <script>
             $(document).ready(function() {
