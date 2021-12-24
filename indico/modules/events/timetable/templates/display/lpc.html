@@ -73,39 +73,43 @@
 {% endmacro %}
 
 {% macro render_speakers(speakers) %}
-    {% for speaker in speakers %}
-	{{ speaker.display_full_name }}
-    {% endfor %}
+    {# My kindom for a language that does list comprehensions... #}
+    {%- set names = [ ] -%}
+    {%- for speaker in speakers -%}
+	{{ names.append(speaker.display_full_name) or "" }}
+    {%- endfor -%}
+    {{ names|join(', ') }}
 {% endmacro %}    
 
 {# What's going on in a given room at this time #}
-{% macro RoomAtTime(start, room, fcolors, bcolors, rows) %}
-    {% if room in start %}
-	{% if start[room] == "skip" %}
+{%- macro RoomAtTime(start, room, fcolors, bcolors, rows, brows) -%}
+    {%- if room in start -%}
+	{%- if start[room] == "skip" -%}
+	    <!-- skip -->
 	    {# rowspan, skip here #}
-	{% elif start[room].type.name == 'BREAK' %}
-	    {% set obj = start[room].object %}
+	{%- elif start[room].type.name == 'BREAK' -%}
+	    {%- set obj = start[room].object -%}
     	    <td bgcolor={{ bcolors[obj.id] }} style="color: #{{fcolors[obj.id]}}"
-		rowspan={{ rows[obj.id] }} valign="top">
+		rowspan={{ brows[obj.id] }} valign="top">
 	    {{ obj.title }}</td>
-	{% else %}
-	    {% set obj = start[room].object %}
+	{%- else -%}
+	    {%- set obj = start[room].object -%}
 	    <td bgcolor={{ bcolors[obj.id] }} style="color: #{{fcolors[obj.id]}}"
 		rowspan={{ rows[obj.id] }} valign="top">
     	    <a href="{{url_for('contributions.display_contribution', obj) }}"
 		style="color:#{{fcolors[obj.id]}}">
 	    <b>{{ obj.title }}</b></a>
-       	    {% set speakers = obj.person_links|selectattr("is_speaker")|list %}
-      	    {% if speakers %}
+       	    {%- set speakers = obj.person_links|selectattr("is_speaker")|list -%}
+      	    {%- if speakers -%}
                 <br> {{ render_speakers(speakers) }}
-       	    {% endif %}
+       	    {%- endif -%}
 	    <span class="lpctt"><br>{{ room }}</span>
             </td>
-	{% endif %}
-    {% else %}
+	{%- endif -%}
+    {%- else -%}
 	<td></td>
-    {% endif %}
-{% endmacro %}
+    {%- endif -%}
+{%- endmacro -%}
 
 {#
  # Let's try to make a tracks header.
@@ -117,7 +121,7 @@
 {%- endmacro -%}
 
 {%- set seen = [] -%}
-{#
+
 <table border><tr>
 {%- for day, entries in days -%}
     {%- for entry in entries -%}
@@ -131,10 +135,11 @@
     {%- endfor -%}
 {%- endfor -%}
 </tr></table><p>
-#}
+
 {#
  # Now go through again to render the schedule.
  #}
+<table class="lpctt">
 {% for day, entries in days %}
     {% set roomlist = [] %}
     {% set starts = {} %}
@@ -167,6 +172,7 @@
      # Now we have to plow through again to count rows 
      #}
     {% set rows = { } %}
+    {%- set brows = { } -%}  {# Rows for break items; ID not unique #}
     {% set opens = [] %}
     {% for start in starts|sort %}
 	{#
@@ -177,8 +183,13 @@
 	{% set stillopen = [] %}
 	{% for open in opens %}
 	    {% if open.end_dt > fstarts[start] %}
-		{{ rows.__setitem__(open.object.id, rows[open.object.id] + 1) or "" }}
+		{%- if open.type.name == 'BREAK' -%}
+		    {{ brows.__setitem__(open.object.id, brows[open.object.id] + 1) or "" }}
+		{%- else -%}
+		    {{ rows.__setitem__(open.object.id, rows[open.object.id] + 1) or "" }}
+		{%- endif -%}
 		{{ starts[start].__setitem__(open.object.room_name, "skip") or "" }}
+                {# open.object.id }} {{rows[open.object.id]}} #}
 		{{ stillopen.append(open) or "" }}
 	    {% endif %}
 	{% endfor %}
@@ -194,7 +205,11 @@
 	{% for room in starts[start] %}
 	    {% set entry = starts[start][room] %}
 	    {% if entry != "skip" %}
-	    	{{ rows.__setitem__(entry.object.id, 1) or "" }}
+		{%- if entry.type.name == 'BREAK' -%}
+	    	    {{ brows.__setitem__(entry.object.id, 1) or "" }}
+		{%- else -%}
+	            {{ rows.__setitem__(entry.object.id, 1) or "" }}
+		{%- endif -%}
 	    	{{ opens.append(entry) or "" }}
 	    {% endif %}
 	{% endfor %}
@@ -213,8 +228,9 @@
     {% for start in starts|sort %}
 	<tr><th valign="top">{{ start }}</th>
 	{% for room in roomlist|sort %}
-	    {{ RoomAtTime(starts[start], room, fcolors, bcolors, rows) }}
+	    {{ RoomAtTime(starts[start], room, fcolors, bcolors, rows, brows) }}
    	{% endfor %}
 	</tr>
     {% endfor %}
 {% endfor %}
+</table>
