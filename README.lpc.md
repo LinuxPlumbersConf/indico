@@ -1,3 +1,5 @@
+# Indico
+
 ## Export old site
 
 * On the old site create a dump of the database:
@@ -64,3 +66,51 @@ systemctl restart apache2.service indico-celery.service indico-uwsgi.service
 systemctl enable apache2.service postgresql.service redis-server.service indico-celery.service indico-uwsgi.service
 
 ```
+
+# Wordpress
+
+## Export old site
+
+```
+mkdir /path/to/blog-backup && cd /path/to/blog-backup
+tar -C /var/www/ -czx blog.tar.gz blog/
+for y in 2019 2020 2021 ; do mysqldump wordpress_$y > wordpress_$y.sql
+```
+
+## Install
+
+```
+apt-get install wordpress mariadb-server
+```
+
+The actual wordpress won't be used, but this is way easier than to install dependencies by hand
+
+Prepare mysql databases:
+
+```
+mysql_secure_installation
+
+for y in 2019 2020 2021 ; do 
+    cat > /tmp/wp-db-setup.sql << EOF
+CREATE DATABASE wordpress_$y;
+GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP,ALTER
+ON wordpress_\$y.*
+TO wordpress@localhost
+IDENTIFIED BY 'aeb4eGoC';
+FLUSH PRIVILEGES;
+EOF
+
+    cat /tmp/wp-db-setup.sql | mysql --defaults-extra-file=/etc/mysql/debian.cnf
+done 
+```
+
+## Import
+
+```
+for y in 2019 2020 2021 ; do
+    cat /path/to/wordpress_$y.sql | mysql --defaults-extra-file=/etc/mysql/debian.cnf wordpress_$y
+done
+
+tar -C /var/www -xzf /path/to/blog.tar.gz
+```
+
