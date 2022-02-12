@@ -1,0 +1,687 @@
+/*
+    LPC 2021 stylesheet for Indico
+*/
+
+/* Google Montserrat in Regular 400, Semi-bold 600, and Bold 700
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+*/
+
+/*
+  Usage of Monserrat bold
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 700;
+*/
+
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Big John for banner text */
+@font-face {
+    font-family: "Big John";
+    src: url("/blog/2021/style/bigjohn.eot");
+    src: url("/blog/2021/style/bigjohn.eot?#iefix") format("embedded-opentype"),
+    url("/blog/2021/style/bigjohn.woff2") format("woff2"),
+    url("/blog/2021/style/bigjohn.woff") format("woff"),
+    url("/blog/2021/style/bigjohn.ttf") format("truetype"); }
+
+/* ----------- Styles for the conference header ----------- */
+
+/*
+    The wrapper of the whole conference page.
+*/
+
+.conf {
+    width: 100%;
+    border: none;
+    margin: auto;
+}
+
+/* This is "behind" the header top bar, the title box with the image
+   and the title, and also behind the subtitle with the date and timezone.
+   Note that the timezone and the date are padded left by 6px, so a bit of
+   this confheader will show and the color has to match the color of the
+   subtitle background */
+.confheader {
+    background: #ffffff;
+}
+
+/*
+    Wraps around the upper part of the conference header.
+*/
+.confTitleBox {
+    color: white;
+    min-height: 90px;
+    background: transparent url(/blog/2021/wp-content/uploads/2021/06/LPC2021_bannerFINAL.svg);
+    background-size: auto 100%;
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+}
+
+/*
+    Sets the width of the upper part of the conference header.
+    Is set to 950px and centered by default.
+*/
+.confTitle {
+    width: 100%;
+    height: 138px;
+    line-height: 138px;
+    margin: 0 auto;
+    vertical-align: middle;
+    font-family: "Big John";
+}
+
+/*
+    The box containing the logo. By the default the logo is placed
+    on the left of the conference title.
+*/
+.confLogoBox {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+/*
+    The style for the title text.
+*/
+.conference-title-link {
+    padding-top: 15px;
+}
+
+span.conference-title-link span {
+    background-color: transparent;
+    font-family: "Big John";
+    /* force line break after each word */
+    word-spacing: 10000px;
+    color: white;
+    /* Line the start of the title text with the right
+       margin on the menu below */
+    padding-left: 155pt;
+    padding-right: 12pt;
+    padding-top: -130pt;
+    padding-bottom: 4pt;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    font-size: 18pt;
+    text-transform: uppercase;
+}
+
+/*
+    Wrapper around the bottom part of the conference header
+*/
+.confSubTitleBox {
+    /*background: #4e94af;*/
+    background: #ffffff;
+    color: white;
+    margin-left: 6px;
+    border: 0;
+}
+
+.datePlace {
+    font-size: 1.2em;
+    /*color: white;*/
+    color: black;
+}
+
+div.datePlace > div.timezone {
+    font-size: 1.2em;
+    /*color: white;*/
+    color: black;
+}
+
+/*
+    The content of the lower part of the header. Is by default
+    centered and has a fixed width.
+*/
+.confSubTitleContent {
+    width: 100%;
+    margin: 0 auto;
+    font-size: 1em;
+    color: #4e94af;
+}
+
+/*
+    Style for links in the lower part of the header
+*/
+.confSubTitle a {
+    font-size: 1em;
+}
+
+/*
+    Styles for the date and place information.
+*/
+.datePlace {
+    font-size: 1em;
+}
+
+
+/*
+    Announcement styles
+*/
+.simpleTextAnnouncement {
+    background: #F5FAFF url(../../images/conf/sprites_blue.png) repeat-x scroll 0 -400px;
+    border-top: 1px solid #4e94af;
+    font-family: "Montserrat";
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+    color: #4e94af;
+    padding: 8px 0;
+}
+
+
+/* ----------- Styles for the main content ----------- */
+
+
+a:hover, .fake-link:hover, .ui-widget-content a:hover {
+    color: #865899;
+}
+
+
+/*
+    The wrapper around the menu and the page content.
+    By default centered with a fix width.
+*/
+#confSectionsBox {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 5px;
+}
+
+
+
+/* ----------- Styles for the menu ----------- */
+
+
+/* Styles for all menu Items */
+
+/*
+    Wrapper around the menu
+*/
+.conf_leftMenu {
+    float:left;
+    font-family:"Montserrat";
+    font-size: 12px;
+    /* width:200px; */
+}
+
+/*
+    Styles for the menu box
+*/
+#outer {
+    border: 1px solid #ccc;
+    background: #f6f6f6;
+}
+
+/*
+    The menu item
+*/
+#outer li a {
+    font-family:"Montserrat";
+}
+
+/*
+    The menu item when doing mouseover
+*/
+#outer li a:hover {
+    background: #e0e0e0;
+}
+
+/*
+    Tooltips styles
+*/
+.qtip-default {
+    font-size: 14px;
+    line-height: 16px;
+}
+.qtip-default a .qtip-default.qtip-popup a, .qtip-default.add-field-qtip a, .qtip-default.informational a, .qtip-default.qbubble a {
+    color: #158ebb;
+}
+.settingsWidget a, .protectionWidget a {
+    font-size: 1em;
+}
+
+
+/*
+    A non selected menu item
+*/
+.menuConfTitle {
+    text-align: left;
+}
+
+.menuConfTitle a {
+    color: #158ebb;
+    padding: 7px 12px;
+}
+
+/*
+    A selected menu item
+*/
+
+.menuConfTitle.selected > a, .menuConfMiddleCell.selected > a {
+    color: white;
+    /*background: #4e94af;*/
+    background: #4db7b7;
+}
+
+/*
+    sub menu item
+*/
+li ul.inner li a {
+    padding: 3px 12px 3px 30px;
+    background: transparent url(../../images/conf/left_menu_bullet.png) scroll no-repeat 15px center;
+}
+
+
+/*
+    Support box
+*/
+
+.support_box {
+    background: #f6f6f6;
+    border: 1px solid #ccc;
+}
+
+.support_box > h3 {
+    color: #f6f6f6;
+    /*background: #4e94af;*/
+    background: #4db7b7;
+    font-family: "Montserrat";
+    font-size: 1em;
+}
+
+
+
+/* ----------- Styles for the page content ----------- */
+
+
+.conference-page header {
+    margin-bottom: 0px;
+}
+
+.conference-page header h2 {
+    color: #865899;
+    padding-right: 5px;
+}
+
+a, .fake-link, .ui-widget-content a {
+    color: #158ebb;
+}
+
+.ui-dialog-title {
+    color: #865899;
+    font-weight: 700;
+}
+
+/*
+    Wrapper around the content
+*/
+.confBodyBox {
+    margin-left: 230px;
+}
+
+div.infoline {
+    float: none;
+    width: 100%;
+}
+
+.infoline.date {
+    display: none;
+}
+
+#protection-details-link, #language-selector-link, #tz-selector-link {
+    display: none;
+}
+
+div.material-list, div.location {
+    display: none;
+}
+
+/* Menu control trickery */
+
+input.LeftMenuCtrl {
+    display: none;
+}
+div.conf_leftMenu {
+    margin-left: 1em;
+}
+
+img.SponsorImg {
+    max-width: 100px;
+    margin: 5px;
+}
+
+.SponsorClass h5 {
+    font-family: 'Montserrat';
+    margin-bottom: 5px;
+}
+
+img.confLogo {
+    margin: 2vw 1vw 2vw 1vw;
+    width: 10vw;
+}
+
+div.centered-column-wrapper {
+    width: auto;
+}
+
+/* Narrow-screen breakpoint */
+@media screen and (max-width: 50em) {
+    div.conf_leftMenu {
+	position: absolute;
+	top: 50px;
+	right: 1em;
+	z-index: 20;
+/*
+	margin-left: 1em;
+	float: none;
+	margin-right: 1em;
+*/
+    }
+    label.LeftMenuCtrl:after {
+	content: "X";
+    }
+
+    label.LeftMenuCtrl {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	font-size: xx-large;
+	color: white;
+    }
+
+    input[type=checkbox]:checked ~ label.LeftMenuCtrl:after {
+	content: "☰";
+    }
+
+    input[type=checkbox]:checked ~ div.conf_leftMenu {
+	display: none;
+    }
+    div.confBodyBox {
+	margin-left: 1em;
+	margin-right: 1em;
+    }
+    li.LeftMenuCtrl {
+	padding-left: 7px;
+    }
+    div.SponsorBox {
+	float: right;
+	background: #f6f6f6;
+	padding: 5px;
+	margin: 6px;
+	border: 1px;
+	border-style: solid;
+	border-color: #ccc;
+    }
+    div.SponsorClass {
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
+    }
+    img.confLogo {
+	width: 68px;  /* Has to be px, not % */
+	margin: 10px;
+    }
+    .confTitle {
+	height: 90px;
+	line-height: 90px;
+    }
+    .conference-title-link {
+	padding: 5px;
+	height: 90px;
+	line-height: 90px;
+    }
+    .conference-title {
+	padding: 5px;
+	font-size: 16pt;
+    }
+    span.conference-title-link span {
+	/*background-color: black;*/
+	background-color: transparent;
+	color: white;
+	/*padding: 10px;*/
+        padding-left: 18%;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: normal;
+	font-size: 12pt;
+	font-weight: 800;
+    }
+    div.centered-column {
+	margin: 2em;
+	width: 100%;
+    }
+
+}
+
+/* Wide-screen defaults. */
+@media screen and (min-width: 50em) {
+    label.LeftMenuCtrl:after,
+    input[type=checkbox]:checked ~ label.LeftMenuCtrl:after {
+	content: none;
+    }
+
+    input[type=checkbox]:checked ~ div.conf_leftMenu {
+	display: block;
+    }
+
+    li.LeftMenuCtrl {
+	display: none;
+    }
+    div.confBodyBox {
+	margin-left: 225px;
+	margin-right: 225px;
+    }
+    div.SponsorBox {
+	width: 200px;
+	float: right;
+	background: #f6f6f6;
+	padding: 5px;
+	margin: 6px;
+	border: 1px;
+	border-style: solid;
+	border-color: #ccc;
+    }
+    div.SponsorClass {
+	margin: 0;
+	text-align: center;
+	padding: 12px;
+    }
+    div.SponsorClass h5, div.SponsorClass a, div.SponsorClass img {
+	text-align: center;
+    }
+    div.SponsorClass:first-child h5 {
+	margin-top: 1px;
+    }
+}
+
+/* Disappear a bunch of the iconery we don't really have a use for */
+div.button-bar {
+    display: none;
+}
+
+div.conferenceDetails div.description {
+    margin: 0px 0px 2em 0px;
+    color: black;
+}
+
+div.description h2 {
+    margin-top: 0px;
+}
+
+div.main-action-bar {
+    /*background-color: #4e94af;*/  /* Zohar-perfect top bar color 2020 */
+    background-color: #183344;  /* Zohar-perfect top bar color 2021 */
+}
+
+ul.steps li.completed .circle::before {
+    background-color: #ed7101;
+    border-color: #ed7101;
+}
+ul.steps li:first-child .horizontal-line {
+    background-color: #ed7101;
+}
+
+ul.steps li.completed .text {
+    color: #ed7101;
+}
+
+div.action-box.highlight {
+    background: #f6f6f6;
+    border-color: #ccc;
+}
+
+.action-box.highlight {
+    color: black;
+}
+
+.action-box.highlight .section:not(.highlight):not(.warning):not(.danger):not(.disabled):not(.accept):not(.plain) > .icon {
+    color: black;
+}
+
+.action-box.highlight .section:not(.highlight):not(.warning):not(.danger):not(.disabled):not(.accept):not(.plain) {
+    color: #black;
+}
+
+.action-box.highlight .section:not(.highlight):not(.warning):not(.danger):not(.disabled):not(.accept):not(.plain) .text .label {
+    color: #4e94af;
+}
+
+a.i-button {
+    background: #4e94af;
+}
+
+/* This is painful */
+.i-button.highlight:not(.label):not(.borderless):not(.text-color), .i-selection input[type="radio"]:checked + label:not(.label):not(.borderless):not(.text-color), .categorynav .category-list .item .button-wrapper .highlight:not(.label):not(.borderless):not(.text-color).action-button, .categorynav .category-list .item .button-wrapper :not(.label):not(.borderless):not(.text-color).action-button, .highlight:not(.label):not(.borderless):not(.text-color).action-button, :not(.label):not(.borderless):not(.text-color).action-button {
+    background: #4e94af;
+}
+
+.call-for-abstracts .cfa-announcement {
+    color: black;
+    padding: 0;
+}
+
+h1, h2, h3, h4 {
+    color: black;
+}
+
+.conference-page .page-content h1, .conference-page .page-content h2, .conference-page .page-content h3 {
+    color: black;
+}
+
+.footer * {
+    line-height: initial;
+}
+
+/* Stuff for the timetable */
+table.lpctt {
+    border: black;
+    padding: 5px;
+    border-style: groove;
+    border-width: 3px;
+    background-color: white;
+}
+
+table.lpctt tr:hover {
+    background-color: #f6f6f6;
+}
+
+tr.lpcttday {
+    background-color: beige;
+}
+
+span.lpctt {
+    display: none;
+}
+
+@media only screen and (max-width: 48em) {
+	/* Force table to not be like tables anymore */
+	table.lpctt  {
+        display: table-row;
+	width: 95%;
+    }
+    table.lpctt thead {
+        display: none;
+    }
+    span.lpctt {
+	display: inline;
+    }
+    table.lpctt tbody, th, td, tr {
+		display: block;
+	}
+
+    tr.lpctthdr {
+	display: none;
+    }
+
+    table.lpctt td {
+	    /* Behave  like a "row" */
+	    border: none;
+	    position: relative;
+	    /* padding-left: 50%;*/
+	}
+
+	table.lpctt td:before {
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%;
+		padding-right: 10px;
+		white-space: nowrap;
+	}
+}
+
+
+/* ----------- Styles for general definitions across the page ----------- */
+
+/*
+    The general table styling (TODO test in the schedule view.
+*/
+
+* {
+    font-family: "Montserrat";
+}
+
+body {
+    font-size: 0.8em;
+}
+
+p {
+    line-height: 1.4em;
+}
+
+.fixed-width-standalone-page header .page-info, .fixed-width-standalone-text-page header .page-info, .dialog-page header .page-info, .management-page header .page-info, .conference-page header .page-info, .meeting-page header .page-info, .category-calendar-page header .page-info, h1, .corner-message, div.announcement-bar, div.main-breadcrumb, div.session-bar, #filter-placeholder, .qtip-default.add-field-qtip, .side-menu, .categorynav .category-list .search-results-list .title strong, .timetable-title, .participant-list-wrapper ul.participant-list, .paper-content .spotlight-file-name .fixed-width-standalone-page header .page-description, .fixed-width-standalone-text-page header .page-description, .dialog-page header .page-description, .management-page header .page-description, .conference-page header .page-description, .meeting-page header .page-description, .category-calendar-page header .page-description, h2, h3, h4, .i-box .i-box-header .i-box-title, .i-timeline-item .i-timeline-item-box .i-box-header .i-box-title, .categorynav .category-list .i-box-header .i-box-title, .person-link-list .i-box-header .i-box-title, #email-template-manager .email-template-wrapper .regform-section-sortable-placeholder .i-box-header .i-box-title, .regform-section .i-box-header .i-box-title, .regform-done .i-box-header .i-box-title, .regform-section-sortable-placeholder .i-box-header .i-box-title, .review-item-content .i-box-header .i-box-title, .regform-section-title, .toolbar.global-menu, ul.steps .label, .categorynav .category-list .item .title-wrapper .title, .regFormSectionNewSection, input.regFormTitleInputMgmt .category-info, .speaker-list, .conference-page, .conference-page .description, .conference-page .infogrid, .contribution-list, .track-review-list, .paper-contribution-list {
+    font-family: "Montserrat";
+}
+
+.conference-page section .header-row h3 {
+    color: #865899;
+}
+
+div.session-bar .toolbar {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+table {
+    border-collapse: collapse;
+    border: solid 2px;
+}
+
+tr {
+    border-bottom: 1px solid #ccc;
+}
+
+th, td {
+    text-align: left;
+    padding: 6px;
+}
