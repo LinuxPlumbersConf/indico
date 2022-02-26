@@ -101,6 +101,11 @@ class AbstractEmailLogEntry(db.Model):
                      notification
         """
         recipients = sorted(email_data['to'] | email_data['cc'] | email_data['bcc'])
-        data = {'template_name': email_tpl.title}
+        if email_tpl is not None:
+            name = email_tpl.title
+        else:
+            name = "Unknown"
+
+        data = {'template_name': name}
         return cls(email_template=email_tpl, user=user, recipients=recipients, subject=email_data['subject'],
                    body=email_data['body'], data=data)
