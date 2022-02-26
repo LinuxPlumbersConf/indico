@@ -22,6 +22,7 @@ from indico.modules.events.abstracts.models.persons import AbstractPersonLink
 from indico.modules.events.abstracts.models.review_ratings import AbstractReviewRating
 from indico.modules.events.abstracts.models.reviews import AbstractAction, AbstractReview
 from indico.modules.events.abstracts.notifications import send_abstract_notifications
+from indico.modules.events.abstracts.notifications import send_abstract_comment
 from indico.modules.events.contributions.operations import create_contribution_from_abstract, delete_contribution
 from indico.modules.events.logs.models.entries import EventLogKind, EventLogRealm
 from indico.modules.events.logs.util import make_diff_log
@@ -298,6 +299,7 @@ def create_abstract_comment(abstract, comment_data):
     logger.info('Abstract %s received a comment from %s', abstract, session.user)
     abstract.log(EventLogRealm.reviewing, EventLogKind.positive, 'Abstracts',
                  f'Abstract {abstract.verbose_title} received a comment', session.user)
+    send_abstract_comment(abstract, comment_data)
 
 
 def update_abstract_comment(comment, comment_data):

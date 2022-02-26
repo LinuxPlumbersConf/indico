@@ -16,7 +16,8 @@ from indico.util.i18n import _
 from indico.util.placeholders import replace_placeholders
 from indico.util.rules import Condition, check_rule
 from indico.web.flask.templating import get_template_module
-
+from indico.web.util import url_for_index
+from indico.web.flask.util import url_for
 
 class EmailNotificationCondition(Condition):
     #: Override if you want to customize the text
@@ -176,3 +177,34 @@ def send_abstract_notifications(abstract):
         if email_tpl.stop_on_match and matched:
             break
     return sent
+
+def send_abstract_comment(abstract, comment):
+    """Send comment about an abstract.
+
+    :param abstract: the abstract that is going to be checked
+                     against the event's notification rules
+    :param comment: new comment
+    """
+    title = abstract.title
+    url = url_for('abstracts.display_abstract', abstract, management=False, _external=True)
+    text = comment["text"]
+
+    contact = "contact@linuxplumbersconf.org"
+    authors  = [author.email for author in abstract.primary_authors]
+    authors += [author.email for author in abstract.secondary_authors]
+
+    body = """
+A new comment has been added to submission "%s":
+
+%s
+
+You can review and respond at the submission page
+%s
+or reply to this email
+""" % (title, text, url)
+
+    email = make_email(to_list=[ contact ], cc_list=authors,
+                       subject="LPC: Comment added to your submission",
+                       reply_address=contact, body=body)
+    send_email(email, abstract.event, 'Abstracts', session.user)
+    abstract.email_logs.append(AbstractEmailLogEntry.create_from_email(email, email_tpl=None, user=session.user))
