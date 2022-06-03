@@ -1,35 +1,45 @@
 /*
-    LPC 2021 stylesheet for Indico
+    LPC 2022 stylesheet for Indico
 */
 
-/* Google Montserrat in Regular 400, Semi-bold 600, and Bold 700
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
-*/
+/* Since we are using an image for the banner, limiting the max width across all screens */
+body {
+    max-width: 1920px;
+}
 
-/*
-  Usage of Monserrat bold
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 700;
-*/
-
-
+/* latin-ext */
 @font-face {
-  font-family: 'Montserrat';
+  font-family: 'Quicksand';
   font-style: normal;
   font-weight: 400;
-  src: local('Montserrat Regular'), local('Montserrat-Regular'), url(https://fonts.gstatic.com/s/montserrat/v12/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/quicksand/v29/6xKtdSZaM9iE8KbpRA_hJVQNcOM.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/quicksand/v29/6xKtdSZaM9iE8KbpRA_hK1QN.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/s/quicksand/v29/6xKtdSZaM9iE8KbpRA_hJVQNcOM.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/s/quicksand/v29/6xKtdSZaM9iE8KbpRA_hK1QN.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* Big John for banner text */
-@font-face {
-    font-family: "Big John";
-    src: url("/blog/2021/style/bigjohn.eot");
-    src: url("/blog/2021/style/bigjohn.eot?#iefix") format("embedded-opentype"),
-    url("/blog/2021/style/bigjohn.woff2") format("woff2"),
-    url("/blog/2021/style/bigjohn.woff") format("woff"),
-    url("/blog/2021/style/bigjohn.ttf") format("truetype"); }
 
 /* ----------- Styles for the conference header ----------- */
 
@@ -49,7 +59,7 @@
    this confheader will show and the color has to match the color of the
    subtitle background */
 .confheader {
-    background: #ffffff;
+    background-color: #ffffff;
 }
 
 /*
@@ -58,10 +68,10 @@
 .confTitleBox {
     color: white;
     min-height: 90px;
-    background: transparent url(/blog/2021/wp-content/uploads/2021/06/LPC2021_bannerFINAL.svg);
-    background-size: auto 100%;
-    /*background-size: cover;*/
-    /*background-repeat: no-repeat;*/
+    height: 19vh;
+    max-height:256px;
+    background: transparent url(https://lpc.events/blog/2022/wp-content/uploads/2022/05/Banner_with-title.jpg);
+    background-size: cover;
 }
 
 /*
@@ -74,7 +84,7 @@
     line-height: 138px;
     margin: 0 auto;
     vertical-align: middle;
-    font-family: "Big John";
+    font-family: 'Quicksand';
 }
 
 /*
@@ -92,11 +102,12 @@
 */
 .conference-title-link {
     padding-top: 15px;
+    display: none;
 }
 
 span.conference-title-link span {
     background-color: transparent;
-    font-family: "Big John";
+    font-family: 'Quicksand';
     /* force line break after each word */
     word-spacing: 10000px;
     color: white;
@@ -117,23 +128,31 @@ span.conference-title-link span {
     Wrapper around the bottom part of the conference header
 */
 .confSubTitleBox {
-    /*background: #4e94af;*/
-    background: #ffffff;
-    color: white;
-    margin-left: 6px;
+    background-color: #f6f6f6;
     border: 0;
 }
 
+/*
+    Styles for the date and place information.
+*/
+
 .datePlace {
     font-size: 1.2em;
-    /*color: white;*/
+    margin: 0.4em;
+}
+
+div.datePlace > div.date {
+    float: left;
+    font-size: 1em;
+    margin: 0.2em;
     color: black;
 }
 
 div.datePlace > div.timezone {
-    font-size: 1.2em;
-    /*color: white;*/
-    color: black;
+    float: left;
+    font-size: 1em;
+    margin: 0.2em;
+    color: #777;
 }
 
 /*
@@ -154,12 +173,7 @@ div.datePlace > div.timezone {
     font-size: 1em;
 }
 
-/*
-    Styles for the date and place information.
-*/
-.datePlace {
-    font-size: 1em;
-}
+
 
 
 /*
@@ -168,7 +182,7 @@ div.datePlace > div.timezone {
 .simpleTextAnnouncement {
     background: #F5FAFF url(../../images/conf/sprites_blue.png) repeat-x scroll 0 -400px;
     border-top: 1px solid #4e94af;
-    font-family: "Montserrat";
+    font-family: "Quicksand";
     font-weight: bold;
     font-size: 1em;
     text-align: center;
@@ -181,7 +195,7 @@ div.datePlace > div.timezone {
 
 
 a:hover, .fake-link:hover, .ui-widget-content a:hover {
-    color: #865899;
+    color: #aa6618;
 }
 
 
@@ -192,9 +206,8 @@ a:hover, .fake-link:hover, .ui-widget-content a:hover {
 #confSectionsBox {
     width: 100%;
     margin: 0 auto;
-    margin-top: 5px;
+    height: 82vh; /* Added to grow the menu column gray background  */
 }
-
 
 
 /* ----------- Styles for the menu ----------- */
@@ -207,31 +220,40 @@ a:hover, .fake-link:hover, .ui-widget-content a:hover {
 */
 .conf_leftMenu {
     float:left;
-    font-family:"Montserrat";
+    font-family:"Quicksand";
     font-size: 12px;
-    /* width:200px; */
 }
+
+table.overviewtable {border: 0;}
+td.overviewtable {vertical-align: top;padding: 0 0 2em 0;}
+td.rightcol{padding-left: 3em;}
 
 /*
     Styles for the menu box
 */
 #outer {
-    border: 1px solid #ccc;
-    background: #f6f6f6;
+    border: 0;
 }
 
 /*
     The menu item
 */
 #outer li a {
-    font-family:"Montserrat";
+    font-family: "Quicksand";
+    font-size: 1.3em;
 }
 
 /*
     The menu item when doing mouseover
 */
 #outer li a:hover {
-    background: #e0e0e0;
+    background-color: #f0b068;
+    color: white;
+}
+
+#outer li a:not(.no-link):hover {
+    background: #f0b068;
+    color: white;
 }
 
 /*
@@ -257,7 +279,7 @@ a:hover, .fake-link:hover, .ui-widget-content a:hover {
 }
 
 .menuConfTitle a {
-    color: #158ebb;
+    color: #000000;
     padding: 7px 12px;
 }
 
@@ -267,9 +289,13 @@ a:hover, .fake-link:hover, .ui-widget-content a:hover {
 
 .menuConfTitle.selected > a, .menuConfMiddleCell.selected > a {
     color: white;
-    /*background: #4e94af;*/
-    background: #4db7b7;
+    background-color: #e88617;
 }
+
+.menuConfSelected, .menuConfMiddleCell.selected {
+    border: 0;
+}
+
 
 /*
     sub menu item
@@ -285,16 +311,14 @@ li ul.inner li a {
 */
 
 .support_box {
-    background: #f6f6f6;
-    border: 1px solid #ccc;
+    border: 0;
 }
 
 .support_box > h3 {
     color: #f6f6f6;
-    /*background: #4e94af;*/
-    background: #4db7b7;
-    font-family: "Montserrat";
-    font-size: 1em;
+    background-color: #e88617;
+    font-family: "Quicksand";
+    font-size: 1.3em;
 }
 
 
@@ -307,24 +331,19 @@ li ul.inner li a {
 }
 
 .conference-page header h2 {
-    color: #865899;
+    color: #3e7101;
     padding-right: 5px;
+    font-size: 2.5em;
+    font-weight: 400;
 }
 
 a, .fake-link, .ui-widget-content a {
-    color: #158ebb;
+    color: #e88617;
 }
 
 .ui-dialog-title {
-    color: #865899;
+    color: #e88617;
     font-weight: 700;
-}
-
-/*
-    Wrapper around the content
-*/
-.confBodyBox {
-    margin-left: 230px;
 }
 
 div.infoline {
@@ -349,9 +368,6 @@ div.material-list, div.location {
 input.LeftMenuCtrl {
     display: none;
 }
-div.conf_leftMenu {
-    margin-left: 1em;
-}
 
 img.SponsorImg {
     max-width: 100px;
@@ -359,7 +375,7 @@ img.SponsorImg {
 }
 
 .SponsorClass h5 {
-    font-family: 'Montserrat';
+    font-family: 'Quicksand';
     margin-bottom: 5px;
 }
 
@@ -373,17 +389,12 @@ div.centered-column-wrapper {
 }
 
 /* Narrow-screen breakpoint */
-@media screen and (max-width: 50em) {
+@media screen and (max-width: 54em) {
     div.conf_leftMenu {
 	position: absolute;
 	top: 50px;
 	right: 1em;
 	z-index: 20;
-/*
-	margin-left: 1em;
-	float: none;
-	margin-right: 1em;
-*/
     }
     label.LeftMenuCtrl:after {
 	content: "X";
@@ -391,9 +402,9 @@ div.centered-column-wrapper {
 
     label.LeftMenuCtrl {
 	position: absolute;
-	top: 5px;
-	right: 5px;
-	font-size: xx-large;
+	top: 0.7em;
+	right: 0.4em;
+	font-size: x-large;
 	color: white;
     }
 
@@ -413,12 +424,10 @@ div.centered-column-wrapper {
     }
     div.SponsorBox {
 	float: right;
-	background: #f6f6f6;
-	padding: 5px;
-	margin: 6px;
-	border: 1px;
-	border-style: solid;
-	border-color: #ccc;
+	background-color: #f6f6f6;
+	padding: 0;
+	margin: 0;
+	border: 0;
     }
     div.SponsorClass {
 	display: inline-block;
@@ -443,10 +452,8 @@ div.centered-column-wrapper {
 	font-size: 16pt;
     }
     span.conference-title-link span {
-	/*background-color: black;*/
 	background-color: transparent;
 	color: white;
-	/*padding: 10px;*/
         padding-left: 18%;
 	display: inline-block;
 	vertical-align: middle;
@@ -458,44 +465,57 @@ div.centered-column-wrapper {
 	margin: 2em;
 	width: 100%;
     }
-
+    td.rightcol{padding: 2em 0 2em 0;}
 }
 
 /* Wide-screen defaults. */
-@media screen and (min-width: 50em) {
+@media screen and (min-width: 54em) {
     label.LeftMenuCtrl:after,
     input[type=checkbox]:checked ~ label.LeftMenuCtrl:after {
 	content: none;
     }
 
+    header .title-with-actions {
+        margin-top: 1.4vh;
+        margin-bottom: 1.4vh;
+    }
+
     input[type=checkbox]:checked ~ div.conf_leftMenu {
 	display: block;
+	background-color: #f6f6f6;
+	min-width: 142px;
+	min-height: 800px;
+	width: 13.4vw;
+	max-width: 256px;
+	height: 100%;
     }
 
     li.LeftMenuCtrl {
 	display: none;
     }
     div.confBodyBox {
-	margin-left: 225px;
-	margin-right: 225px;
+	margin-left: 17%;
+	margin-right: 17%;
     }
     div.SponsorBox {
-	width: 200px;
+	min-width: 142px;
+	min-height: 800px;
+	height: 100%;
+	width: 13.4vw;
+	max-width: 256px;
 	float: right;
-	background: #f6f6f6;
-	padding: 5px;
-	margin: 6px;
-	border: 1px;
-	border-style: solid;
-	border-color: #ccc;
+	background-color: #f6f6f6;
+	padding: 0;
+	margin: 0;
+	border: 0;
     }
     div.SponsorClass {
 	margin: 0;
 	text-align: center;
-	padding: 12px;
     }
     div.SponsorClass h5, div.SponsorClass a, div.SponsorClass img {
 	text-align: center;
+	font-size: 1.3em;
     }
     div.SponsorClass:first-child h5 {
 	margin-top: 1px;
@@ -508,17 +528,16 @@ div.button-bar {
 }
 
 div.conferenceDetails div.description {
-    margin: 0px 0px 2em 0px;
+    margin: 0 0 2em 0;
     color: black;
 }
 
 div.description h2 {
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 div.main-action-bar {
-    /*background-color: #4e94af;*/  /* Zohar-perfect top bar color 2020 */
-    background-color: #183344;  /* Zohar-perfect top bar color 2021 */
+    background-color: #c9dce6;
 }
 
 ul.steps li.completed .circle::before {
@@ -534,7 +553,7 @@ ul.steps li.completed .text {
 }
 
 div.action-box.highlight {
-    background: #f6f6f6;
+    background-color: #f6f6f6;
     border-color: #ccc;
 }
 
@@ -555,12 +574,12 @@ div.action-box.highlight {
 }
 
 a.i-button {
-    background: #4e94af;
+    background-color: #4e94af;
 }
 
 /* This is painful */
 .i-button.highlight:not(.label):not(.borderless):not(.text-color), .i-selection input[type="radio"]:checked + label:not(.label):not(.borderless):not(.text-color), .categorynav .category-list .item .button-wrapper .highlight:not(.label):not(.borderless):not(.text-color).action-button, .categorynav .category-list .item .button-wrapper :not(.label):not(.borderless):not(.text-color).action-button, .highlight:not(.label):not(.borderless):not(.text-color).action-button, :not(.label):not(.borderless):not(.text-color).action-button {
-    background: #4e94af;
+    background-color: #4e94af;
 }
 
 .call-for-abstracts .cfa-announcement {
@@ -644,11 +663,11 @@ span.lpctt {
 /* ----------- Styles for general definitions across the page ----------- */
 
 /*
-    The general table styling (TODO test in the schedule view.
+    The general table styling (TODO test in the schedule view.)
 */
 
 * {
-    font-family: "Montserrat";
+    font-family: "Quicksand";
 }
 
 body {
@@ -656,11 +675,13 @@ body {
 }
 
 p {
-    line-height: 1.4em;
+    font-size: 1.3em;
+    font-weight: 400;
+    line-height: 1.5em;
 }
 
 .fixed-width-standalone-page header .page-info, .fixed-width-standalone-text-page header .page-info, .dialog-page header .page-info, .management-page header .page-info, .conference-page header .page-info, .meeting-page header .page-info, .category-calendar-page header .page-info, h1, .corner-message, div.announcement-bar, div.main-breadcrumb, div.session-bar, #filter-placeholder, .qtip-default.add-field-qtip, .side-menu, .categorynav .category-list .search-results-list .title strong, .timetable-title, .participant-list-wrapper ul.participant-list, .paper-content .spotlight-file-name .fixed-width-standalone-page header .page-description, .fixed-width-standalone-text-page header .page-description, .dialog-page header .page-description, .management-page header .page-description, .conference-page header .page-description, .meeting-page header .page-description, .category-calendar-page header .page-description, h2, h3, h4, .i-box .i-box-header .i-box-title, .i-timeline-item .i-timeline-item-box .i-box-header .i-box-title, .categorynav .category-list .i-box-header .i-box-title, .person-link-list .i-box-header .i-box-title, #email-template-manager .email-template-wrapper .regform-section-sortable-placeholder .i-box-header .i-box-title, .regform-section .i-box-header .i-box-title, .regform-done .i-box-header .i-box-title, .regform-section-sortable-placeholder .i-box-header .i-box-title, .review-item-content .i-box-header .i-box-title, .regform-section-title, .toolbar.global-menu, ul.steps .label, .categorynav .category-list .item .title-wrapper .title, .regFormSectionNewSection, input.regFormTitleInputMgmt .category-info, .speaker-list, .conference-page, .conference-page .description, .conference-page .infogrid, .contribution-list, .track-review-list, .paper-contribution-list {
-    font-family: "Montserrat";
+    font-family: "Quicksand";
 }
 
 .conference-page section .header-row h3 {
@@ -684,4 +705,8 @@ tr {
 th, td {
     text-align: left;
     padding: 6px;
+}
+
+body {
+    max-width: 1920px;
 }
