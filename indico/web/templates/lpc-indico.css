@@ -66,11 +66,10 @@ body {
     Wraps around the upper part of the conference header.
 */
 .confTitleBox {
-    color: white;
     min-height: 90px;
     height: 19vh;
     max-height:256px;
-    background: transparent url(https://lpc.events/blog/2022/wp-content/uploads/2022/05/Banner_with-title.jpg);
+    background: transparent url(https://lpc.events/images/Banner_no-title.jpg);
     background-size: cover;
 }
 
@@ -80,11 +79,9 @@ body {
 */
 .confTitle {
     width: 100%;
-    height: 138px;
-    line-height: 138px;
-    margin: 0 auto;
-    vertical-align: middle;
-    font-family: 'Quicksand';
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
 
 /*
@@ -92,36 +89,44 @@ body {
     on the left of the conference title.
 */
 .confLogoBox {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 142px;
+    width: 13.4vw;
+    max-width: 256px;
+    min-height: 90px;
+    height: 19vh;
+    max-height:256px;
+    background: transparent url(https://lpc.events/images/lpc-logo-square-2022-dropshadow.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 /*
     The style for the title text.
 */
 .conference-title-link {
-    padding-top: 15px;
-    display: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
 }
 
 span.conference-title-link span {
-    background-color: transparent;
-    font-family: 'Quicksand';
-    /* force line break after each word */
-    word-spacing: 10000px;
-    color: white;
-    /* Line the start of the title text with the right
-       margin on the menu below */
-    padding-left: 155pt;
-    padding-right: 12pt;
-    padding-top: -130pt;
-    padding-bottom: 4pt;
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;
-    font-size: 18pt;
-    text-transform: uppercase;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    display: block;
+    float: left;
+    width: 50vw;
+    max-width: 600px;
+    min-height: 90px;
+    height: 19vh;
+    max-height:256px;
+    color: transparent;
+    background: transparent url(https://lpc.events/images/lpc-title-text-2022.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 /*
@@ -380,8 +385,7 @@ img.SponsorImg {
 }
 
 img.confLogo {
-    margin: 2vw 1vw 2vw 1vw;
-    width: 10vw;
+    display: none;
 }
 
 div.centered-column-wrapper {
@@ -390,6 +394,10 @@ div.centered-column-wrapper {
 
 /* Narrow-screen breakpoint */
 @media screen and (max-width: 54em) {
+    .confTitleBox, .confLogoBox, span.conference-title-link span {
+        height: 12vh;
+        min-width: 90px;
+    }
     div.conf_leftMenu {
 	position: absolute;
 	top: 50px;
@@ -399,7 +407,6 @@ div.centered-column-wrapper {
     label.LeftMenuCtrl:after {
 	content: "X";
     }
-
     label.LeftMenuCtrl {
 	position: absolute;
 	top: 0.7em;
@@ -407,7 +414,6 @@ div.centered-column-wrapper {
 	font-size: x-large;
 	color: white;
     }
-
     input[type=checkbox]:checked ~ label.LeftMenuCtrl:after {
 	content: "☰";
     }
@@ -433,33 +439,6 @@ div.centered-column-wrapper {
 	display: inline-block;
 	vertical-align: top;
 	text-align: center;
-    }
-    img.confLogo {
-	width: 68px;  /* Has to be px, not % */
-	margin: 10px;
-    }
-    .confTitle {
-	height: 90px;
-	line-height: 90px;
-    }
-    .conference-title-link {
-	padding: 5px;
-	height: 90px;
-	line-height: 90px;
-    }
-    .conference-title {
-	padding: 5px;
-	font-size: 16pt;
-    }
-    span.conference-title-link span {
-	background-color: transparent;
-	color: white;
-        padding-left: 18%;
-	display: inline-block;
-	vertical-align: middle;
-	line-height: normal;
-	font-size: 12pt;
-	font-weight: 800;
     }
     div.centered-column {
 	margin: 2em;
