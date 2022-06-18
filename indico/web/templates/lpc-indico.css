@@ -99,6 +99,7 @@ body {
     height: 19vh;
     max-height:256px;
     background: transparent url(https://lpc.events/images/lpc-logo-square-2022-dropshadow.svg);
+    background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -133,7 +134,7 @@ span.conference-title-link span {
     Wrapper around the bottom part of the conference header
 */
 .confSubTitleBox {
-    background-color: #f6f6f6;
+    background-color: #d1d1d1;
     border: 0;
 }
 
@@ -381,6 +382,7 @@ img.SponsorImg {
 
 .SponsorClass h5 {
     font-family: 'Quicksand';
+    margin-top: 5px;
     margin-bottom: 5px;
 }
 
@@ -393,6 +395,7 @@ div.centered-column-wrapper {
 }
 
 /* Narrow-screen breakpoint */
+/* nnnn */
 @media screen and (max-width: 54em) {
     .confTitleBox, .confLogoBox, span.conference-title-link span {
         height: 12vh;
@@ -448,56 +451,57 @@ div.centered-column-wrapper {
 }
 
 /* Wide-screen defaults. */
+/* wwwww */
 @media screen and (min-width: 54em) {
     label.LeftMenuCtrl:after,
     input[type=checkbox]:checked ~ label.LeftMenuCtrl:after {
 	content: none;
     }
-
     header .title-with-actions {
         margin-top: 1.4vh;
         margin-bottom: 1.4vh;
     }
-
-    input[type=checkbox]:checked ~ div.conf_leftMenu {
-	display: block;
-	background-color: #f6f6f6;
-	min-width: 142px;
-	min-height: 800px;
-	width: 13.4vw;
-	max-width: 256px;
-	height: 100%;
+    input[type=checkbox]:checked ~ div.conf_leftMenu, div.SponsorBox {
+	      min-height: 960px;
+	      height: 66vh;
+		    min-width: 142px;
+        width: 13.4vw;
+	      max-width: 256px;
     }
-
+    input[type=checkbox]:checked ~ div.conf_leftMenu {
+	      display: block;
+	      background-color: #f6f6f6;
+    }
     li.LeftMenuCtrl {
-	display: none;
+	      display: none;
+    }
+    ul#outer {
+        line-height: 1.6;
+    }
+    div.col2 {
+        margin-top: 2vmin;
     }
     div.confBodyBox {
-	margin-left: 17%;
-	margin-right: 17%;
+        margin-left: 17%;
+        margin-right: 17%;
     }
     div.SponsorBox {
-	min-width: 142px;
-	min-height: 800px;
-	height: 100%;
-	width: 13.4vw;
-	max-width: 256px;
-	float: right;
-	background-color: #f6f6f6;
-	padding: 0;
-	margin: 0;
-	border: 0;
+	      float: right;
+	      background-color: #f6f6f6;
+	      padding: 0;
+	      margin: 0;
+	      border: 0;
     }
     div.SponsorClass {
-	margin: 0;
-	text-align: center;
+        margin: 0;
+        text-align: center;
     }
     div.SponsorClass h5, div.SponsorClass a, div.SponsorClass img {
-	text-align: center;
-	font-size: 1.3em;
+	      text-align: center;
+	      font-size: 1.3em;
     }
     div.SponsorClass:first-child h5 {
-	margin-top: 1px;
+	      margin-top: 1px;
     }
 }
 
@@ -670,6 +674,56 @@ p {
 div.session-bar .toolbar {
     margin-left: 1em;
     margin-right: 1em;
+}
+
+/* ----------- Styles to improve the Topics view (MC in particular)  ----------- */
+
+span.contrib-id {
+  visibility: hidden;
+  display: none;
+}
+
+div.contrib-title {
+  font-size: 2em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+div#display-contribution-list {
+  max-width: 900px;
+}
+
+.contribution-row {
+  margin-top: 4em;
+}
+
+div.speaker-list.icon-user {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.contribution-list .contribution-row .description::before, .contribution-list .track-review-row .description::before, .track-review-list .contribution-row .description::before, .track-review-list .track-review-row .description::before {
+  background: none;
+  overflow: visible;
+}
+
+.contribution-list .contribution-row .description, .contribution-list .track-review-row .description, .track-review-list .contribution-row .description, .track-review-list .track-review-row .description {
+  max-height: initial;
+  overflow: visible;
+  color: black;
+}
+
+.contribution-list .contribution-row:hover, .contribution-list .track-review-row:hover, .track-review-list .contribution-row:hover, .track-review-list .track-review-row:hover {
+  border-color: #e88617;
+}
+
+.conference-page .page-content h3:first-child {
+  font-size: 1.4em;
+}
+
+.contrib-title span {
+  /* TODO Not the best selector. Used on the Topics' page for titles */
+  font-size: 2em;
 }
 
 table {
