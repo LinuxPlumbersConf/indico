@@ -34,7 +34,13 @@
 {% macro render_track(track) %}
     <li>
         <div class="track-title flexrow f-a-center">
-            <h3 class="f-self-stretch">{{ track.title }}</h3>
+            <h3 class="f-self-stretch">
+                {% if track.default_session_id %}
+                    <a href="{{ event.url }}sessions/{{ track.default_session_id }}">{{ track.title }}</a>
+                {% else %}
+                    {{ track.title }}
+                {% endif %}
+            </h3>
             {% if track.code %}
                 <span class="track-code">
                     {{- track.code -}}
