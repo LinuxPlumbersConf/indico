@@ -3,10 +3,10 @@
 
 {% macro render_contribution_list(event, timezone, contributions, total_entries=none, with_session_info=true) %}
     {% if contributions %}
-        {% for contrib in contributions | selectattr('start_dt_display') | sort(attribute='title') | sort(attribute='start_dt_display') %}
+        {% for contrib in contributions | selectattr('start_dt_display') | sort(attribute='start_dt_display') %}
             {{- _render_contribution_row(timezone, contrib, with_session_info) -}}
         {% endfor %}
-        {% for contrib in contributions | rejectattr('start_dt_display') | sort(attribute='title') %}
+        {% for contrib in contributions | rejectattr('start_dt_display') %}
             {{- _render_contribution_row(timezone, contrib, with_session_info) -}}
         {% endfor %}
     {%- else %}
