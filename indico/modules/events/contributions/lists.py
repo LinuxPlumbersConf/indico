@@ -82,6 +82,24 @@ class ContributionListGenerator(ListGeneratorBase):
                 .join(EventPerson)
                 .join(Registration, db.and_(*registration_join_criteria)))
 
+    def _sort_contrinutions(self, contribs, filters):
+        if filters.get('items'):
+            contribs.sort(key=lambda c: c.title.lower())
+            return contribs
+
+        sessions = [c for c in contribs if c.session is None]
+        sorted_contribs = []
+
+        sessions.sort(key=lambda c: c.title.lower())
+        for s in sessions:
+            sorted_contribs.append(s)
+            session_contribs = [c for c in contribs if c.session is not None and c.session.title == s.title]
+            session_contribs.sort(key=lambda c: c.title.lower())
+
+            sorted_contribs += session_contribs
+
+        return sorted_contribs
+
     def _filter_list_entries(self, query, filters):
         if not filters.get('items'):
             return query
@@ -140,6 +158,7 @@ class ContributionListGenerator(ListGeneratorBase):
                          contributions_query.count())
         contributions = [c for c in self._filter_list_entries(contributions_query, self.list_config['filters'])
                          if not self.check_access or c.can_access(session.user)]
+        contributions = self._sort_contrinutions(contributions, self.list_config['filters'])
         sessions = [{'id': s.id, 'title': s.title, 'colors': s.colors} for s in self.event.sessions]
         tracks = [{'id': int(t.id), 'title': t.title_with_group} for t in self.event.tracks]
         total_duration = (sum((c.duration for c in contributions), timedelta()),
