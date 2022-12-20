@@ -4,7 +4,7 @@
 {% block page_class %}fixed-width-standalone-page{% endblock %}
 
 {% block title %}
-    {% trans %}Create a new Indico profile{% endtrans %}
+    {% trans %}Create a new Linux Plumbers Conference account{% endtrans %}
 {% endblock %}
 
 {% block content %}
@@ -13,7 +13,7 @@
     {% if not email_sent %}
         <p>
             {% trans -%}
-                To create a new Indico profile you first need to verify your email address.
+                To create a new LPC account you first need to verify your email address.
             {%- endtrans %}
         </p>
         {{ simple_form(form, back_url=url_for_logout(), submit=_('Send me a verification email'),
