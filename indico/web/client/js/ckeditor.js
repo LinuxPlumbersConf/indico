@@ -131,6 +131,8 @@ export const getConfig = ({
       {name: 'div', styles: true, classes: true},
       {name: 'span', styles: true, classes: true},
       {name: 'pre', styles: true, classes: true},
+      {name: 'table', styles: true, classes: true},
+      {name: 'td', styles: true, classes: true},
       {
         name: 'img',
         attributes: {
