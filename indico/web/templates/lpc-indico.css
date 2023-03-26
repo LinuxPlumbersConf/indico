@@ -67,10 +67,11 @@ body {
 */
 .confTitleBox {
     min-height: 90px;
-    height: 19vh;
+    height: 40vh;
     max-height:256px;
-    background: transparent url(https://lpc.events/images/Banner_no-title.jpg);
-    background-size: cover;
+    background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2023/03/lpc23_banner_no_title.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
 }
 
 /*
@@ -96,7 +97,7 @@ body {
     width: 13.4vw;
     max-width: 256px;
     min-height: 90px;
-    height: 19vh;
+    height: 40vh;
     max-height:256px;
     background: transparent url(https://lpc.events/images/lpc-logo-square-2022-dropshadow.svg);
     background-position: center;
@@ -118,16 +119,16 @@ span.conference-title-link span {
     margin: 0;
     padding: 0;
     display: block;
-    float: left;
-    width: 50vw;
-    max-width: 600px;
+    float: down;
+    height: 40vh;
     min-height: 90px;
-    height: 19vh;
     max-height:256px;
     color: transparent;
-    background: transparent url(https://lpc.events/images/lpc-title-text-2022.svg);
-    background-size: contain;
+    background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2023/03/lpc23_title.svg);
+    background-size: 85%;
     background-repeat: no-repeat;
+    background-position-y: bottom;
+    background-position-x: 14vw;
 }
 
 /*
