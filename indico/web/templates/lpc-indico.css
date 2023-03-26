@@ -1,5 +1,5 @@
 /*
-    LPC 2022 stylesheet for Indico
+    LPC 2023 stylesheet for Indico
 */
 
 /* Since we are using an image for the banner, limiting the max width across all screens */
@@ -9,34 +9,34 @@ body {
 
 /* latin-ext */
 @font-face {
-  font-family: 'Quicksand';
+  font-family: 'Dosis';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/quicksand/v29/6xKtdSZaM9iE8KbpRA_hJVQNcOM.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/dosis/v27/HhyaU5sn9vOmLzlmC_W6EQ.woff2) format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
 @font-face {
-  font-family: 'Quicksand';
+  font-family: 'Dosis';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/quicksand/v29/6xKtdSZaM9iE8KbpRA_hK1QN.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/dosis/v27/HhyaU5sn9vOmLzloC_U.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 /* latin-ext */
 @font-face {
-  font-family: 'Quicksand';
+  font-family: 'Dosis';
   font-style: normal;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/quicksand/v29/6xKtdSZaM9iE8KbpRA_hJVQNcOM.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/dosis/v27/HhyaU5sn9vOmLzlmC_W6EQ.woff2) format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 /* latin */
 @font-face {
-  font-family: 'Quicksand';
+  font-family: 'Dosis';
   font-style: normal;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/quicksand/v29/6xKtdSZaM9iE8KbpRA_hK1QN.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/dosis/v27/HhyaU5sn9vOmLzloC_U.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
@@ -188,7 +188,7 @@ div.datePlace > div.timezone {
 .simpleTextAnnouncement {
     background: #F5FAFF url(../../images/conf/sprites_blue.png) repeat-x scroll 0 -400px;
     border-top: 1px solid #4e94af;
-    font-family: "Quicksand";
+    font-family: "Dosis";
     font-weight: bold;
     font-size: 1em;
     text-align: center;
@@ -226,8 +226,7 @@ a:hover, .fake-link:hover, .ui-widget-content a:hover {
 */
 .conf_leftMenu {
     float:left;
-    font-family:"Quicksand";
-    font-size: 12px;
+    font-size: 13px;
 }
 
 table.overviewtable {border: 0;}
@@ -245,7 +244,7 @@ td.rightcol{padding-left: 3em;}
     The menu item
 */
 #outer li a {
-    font-family: "Quicksand";
+    font-family: "Dosis";
     font-size: 1.3em;
 }
 
@@ -323,7 +322,7 @@ li ul.inner li a {
 .support_box > h3 {
     color: #f6f6f6;
     background-color: #e88617;
-    font-family: "Quicksand";
+    font-family: "Dosis";
     font-size: 1.3em;
 }
 
@@ -381,7 +380,7 @@ img.SponsorImg {
 }
 
 .SponsorClass h5 {
-    font-family: 'Quicksand';
+    font-family: 'Dosis';
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -570,8 +569,9 @@ a.i-button {
     padding: 0;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
     color: black;
+    font-weight: 500;
 }
 
 .conference-page .page-content h1, .conference-page .page-content h2, .conference-page .page-content h3 {
@@ -650,11 +650,11 @@ span.lpctt {
 */
 
 * {
-    font-family: "Quicksand";
+    font-family: "Dosis";
 }
 
 body {
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 p {
@@ -664,7 +664,7 @@ p {
 }
 
 .fixed-width-standalone-page header .page-info, .fixed-width-standalone-text-page header .page-info, .dialog-page header .page-info, .management-page header .page-info, .conference-page header .page-info, .meeting-page header .page-info, .category-calendar-page header .page-info, h1, .corner-message, div.announcement-bar, div.main-breadcrumb, div.session-bar, #filter-placeholder, .qtip-default.add-field-qtip, .side-menu, .categorynav .category-list .search-results-list .title strong, .timetable-title, .participant-list-wrapper ul.participant-list, .paper-content .spotlight-file-name .fixed-width-standalone-page header .page-description, .fixed-width-standalone-text-page header .page-description, .dialog-page header .page-description, .management-page header .page-description, .conference-page header .page-description, .meeting-page header .page-description, .category-calendar-page header .page-description, h2, h3, h4, .i-box .i-box-header .i-box-title, .i-timeline-item .i-timeline-item-box .i-box-header .i-box-title, .categorynav .category-list .i-box-header .i-box-title, .person-link-list .i-box-header .i-box-title, #email-template-manager .email-template-wrapper .regform-section-sortable-placeholder .i-box-header .i-box-title, .regform-section .i-box-header .i-box-title, .regform-done .i-box-header .i-box-title, .regform-section-sortable-placeholder .i-box-header .i-box-title, .review-item-content .i-box-header .i-box-title, .regform-section-title, .toolbar.global-menu, ul.steps .label, .categorynav .category-list .item .title-wrapper .title, .regFormSectionNewSection, input.regFormTitleInputMgmt .category-info, .speaker-list, .conference-page, .conference-page .description, .conference-page .infogrid, .contribution-list, .track-review-list, .paper-contribution-list {
-    font-family: "Quicksand";
+    font-family: "Dosis";
 }
 
 .conference-page section .header-row h3 {
