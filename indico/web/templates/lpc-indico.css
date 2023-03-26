@@ -462,11 +462,11 @@ div.centered-column-wrapper {
         margin-bottom: 1.4vh;
     }
     input[type=checkbox]:checked ~ div.conf_leftMenu, div.SponsorBox {
-	      min-height: 960px;
-	      height: 66vh;
-		    min-width: 142px;
+	min-height: 1110px;
+	height: 1400px;
+	min-width: 142px;
         width: 13.4vw;
-	      max-width: 256px;
+	max-width: 256px;
     }
     input[type=checkbox]:checked ~ div.conf_leftMenu {
 	      display: block;
