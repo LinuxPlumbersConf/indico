@@ -230,7 +230,7 @@ a:hover, .fake-link:hover, .ui-widget-content a:hover {
     font-size: 13px;
 }
 
-table.overviewtable {border: 0;}
+table.overviewtable {border: 0; border-spacing: 4; badding: 4; vertical-align: top}
 td.overviewtable {vertical-align: top;padding: 0 0 2em 0;}
 td.rightcol{padding-left: 3em;}
 
