@@ -253,12 +253,12 @@ td.rightcol{padding-left: 3em;}
     The menu item when doing mouseover
 */
 #outer li a:hover {
-    background-color: #f0b068;
+    background-color: #d79795;
     color: white;
 }
 
 #outer li a:not(.no-link):hover {
-    background: #f0b068;
+    background: #d79795;
     color: white;
 }
 
@@ -295,7 +295,7 @@ td.rightcol{padding-left: 3em;}
 
 .menuConfTitle.selected > a, .menuConfMiddleCell.selected > a {
     color: white;
-    background-color: #e88617;
+    background-color: #c16260;
 }
 
 .menuConfSelected, .menuConfMiddleCell.selected {
@@ -322,7 +322,7 @@ li ul.inner li a {
 
 .support_box > h3 {
     color: #f6f6f6;
-    background-color: #e88617;
+    background-color: #c16260;
     font-family: "Dosis";
     font-size: 1.3em;
 }
@@ -337,18 +337,18 @@ li ul.inner li a {
 }
 
 .conference-page header h2 {
-    color: #3e7101;
+    color: #6a8a25;
     padding-right: 5px;
     font-size: 2.5em;
     font-weight: 400;
 }
 
 a, .fake-link, .ui-widget-content a {
-    color: #e88617;
+    color: #c16260;
 }
 
 .ui-dialog-title {
-    color: #e88617;
+    color: #c16260;
     font-weight: 700;
 }
 
@@ -524,15 +524,15 @@ div.main-action-bar {
 }
 
 ul.steps li.completed .circle::before {
-    background-color: #ed7101;
-    border-color: #ed7101;
+    background-color: #c16260;
+    border-color: #c16260;
 }
 ul.steps li:first-child .horizontal-line {
-    background-color: #ed7101;
+    background-color: #c16260;
 }
 
 ul.steps li.completed .text {
-    color: #ed7101;
+    color: #c16260;
 }
 
 div.action-box.highlight {
@@ -715,7 +715,7 @@ div.speaker-list.icon-user {
 }
 
 .contribution-list .contribution-row:hover, .contribution-list .track-review-row:hover, .track-review-list .contribution-row:hover, .track-review-list .track-review-row:hover {
-  border-color: #e88617;
+  border-color: #c16260;
 }
 
 .conference-page .page-content h3:first-child {
