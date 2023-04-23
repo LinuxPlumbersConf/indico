@@ -68,7 +68,7 @@ body {
 .confTitleBox {
     min-height: 90px;
     height: 40vh;
-    max-height:256px;
+    max-height: 200px;
     background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2023/03/lpc23_banner_no_title.jpg);
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -98,7 +98,7 @@ body {
     max-width: 256px;
     min-height: 90px;
     height: 40vh;
-    max-height:256px;
+    max-height:200px;
     background: transparent url(https://lpc.events/images/lpc-logo-square-2022-dropshadow.svg);
     background-position: center;
     background-size: contain;
@@ -122,7 +122,7 @@ span.conference-title-link span {
     float: down;
     height: 40vh;
     min-height: 90px;
-    max-height:256px;
+    max-height:200px;
     color: transparent;
     background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2023/03/lpc23_title.svg);
     background-size: 85%;
