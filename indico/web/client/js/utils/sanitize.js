@@ -30,7 +30,7 @@ const ALLOWED_TAGS = [
 const ALLOWED_ATTRIBUTES = {
   '*': ['style'],
   // bleach.ALLOWED_ATTRIBUTES
-  'a': ['href', 'title'],
+  'a': ['href', 'title', 'id'],
   'abbr': ['title'],
   'acronym': ['title'],
   // BLEACH_ALLOWED_ATTRIBUTES

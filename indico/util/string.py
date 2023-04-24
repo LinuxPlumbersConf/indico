@@ -38,6 +38,8 @@ BLEACH_ALLOWED_TAGS = bleach.ALLOWED_TAGS | {
     'h5', 'h6', 'pre', 'dl', 'dd', 'dt', 'figure', 'blockquote'
 }
 BLEACH_ALLOWED_ATTRIBUTES = {**bleach.ALLOWED_ATTRIBUTES, 'img': ['src', 'alt', 'style']}
+BLEACH_ALLOWED_ATTRIBUTES['a'] = ['href', 'title', 'id']
+
 # extended list of tags, used for HTML content
 BLEACH_ALLOWED_TAGS_HTML = BLEACH_ALLOWED_TAGS | {
     'address', 'area', 'bdo', 'big', 'caption', 'center', 'cite', 'col', 'colgroup', 'del', 'dfn', 'dir', 'div',
