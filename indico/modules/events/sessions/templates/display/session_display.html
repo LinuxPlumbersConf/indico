@@ -38,6 +38,11 @@
             {{ render_location(sess, class='session-location') }}
         </div>
     {% endif %}
+    {% if sess.matrix_url %}
+        <div class="generic-data">
+	    <h3><a href={{sess.matrix_url}}>Matrix chat</a></h3>
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block page_actions -%}
