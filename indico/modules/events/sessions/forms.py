@@ -29,6 +29,8 @@ class SessionForm(IndicoForm):
     title = StringField(_('Title'), [DataRequired()])
     code = StringField(_('Session code'), description=_('The code that will identify the session in the Book of '
                                                         'Abstracts.'))
+    matrix_room_id = StringField(_('Matrix room id'))
+    matrix_url = StringField(_('Matrix URL'))
     description = TextAreaField(_('Description'))
     default_contribution_duration = IndicoDurationField(_('Default contribution duration'),
                                                         description=_('Duration that a contribution created within '
