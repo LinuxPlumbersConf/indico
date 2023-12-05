@@ -104,6 +104,14 @@ class Session(DescriptionMixin, ColorMixin, ProtectionManagersMixin, LocationMix
         nullable=False,
         default=False
     )
+    matrix_url = db.Column(
+        db.String,
+        nullable=True,
+    )
+    matrix_room_id = db.Column(
+        db.String,
+        nullable=True,
+    )
 
     event = db.relationship(
         'Event',
