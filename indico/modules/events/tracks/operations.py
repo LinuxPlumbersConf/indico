@@ -65,3 +65,17 @@ def update_track_group(track_group, data):
 def delete_track_group(track_group):
     db.session.delete(track_group)
     logger.info('Track group deleted by %r: %r', session.user, track_group)
+
+
+def create_track_from_abstract(abstract, session):
+    from indico.modules.events.abstracts.settings import abstracts_settings
+
+    event = abstract.event
+    track_data = {
+        'title': abstract.title,
+        'description': abstract.description,
+        'default_session': session,
+    }
+    track = create_track(event, track_data)
+    db.session.flush()
+    return session
