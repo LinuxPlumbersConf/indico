@@ -127,3 +127,16 @@ def update_session_coordinator_privs(event, data):
         log_fields = {priv: orig_string(title) for priv, title in COORDINATOR_PRIV_TITLES.items()}
         event.log(EventLogRealm.management, LogKind.change, 'Sessions', 'Coordinator privileges updated',
                   session.user, data={'Changes': make_diff_log(changes, log_fields)})
+
+
+def create_session_from_abstract(abstract):
+    from indico.modules.events.abstracts.settings import abstracts_settings
+
+    event = abstract.event
+    session_data = {
+        'title': abstract.title,
+        'description': abstract.description,
+    }
+    session = create_session(event, session_data)
+    db.session.flush()
+    return session
