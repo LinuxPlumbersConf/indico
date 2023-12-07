@@ -208,7 +208,7 @@ class AbstractReviewingSettingsForm(IndicoForm):
 class AbstractJudgmentFormBase(IndicoForm):
     """Form base class for abstract judgment operations."""
 
-    _order = ('judgment', 'accepted_track', 'accepted_contrib_type', 'session', 'duplicate_of', 'merged_into',
+    _order = ('judgment', 'new_track', 'accepted_track', 'accepted_contrib_type', 'session', 'duplicate_of', 'merged_into',
               'merge_persons', 'judgment_comment', 'send_notifications')
 
     accepted_track = QuerySelectField(_('Track'), [HiddenUnless('judgment', AbstractAction.accept)],
@@ -239,6 +239,8 @@ class AbstractJudgmentFormBase(IndicoForm):
     # TODO: show only if notifications apply?
     send_notifications = BooleanField(_('Send notifications to submitter'), default=True)
 
+    new_track = BooleanField(_('Create a track from the abstract'), [HiddenUnless('judgment', AbstractAction.accept)])
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.session.query = Session.query.with_parent(self.event).order_by(Session.title)
@@ -252,6 +254,8 @@ class AbstractJudgmentFormBase(IndicoForm):
                                             .order_by(ContributionType.name))
         if not self.accepted_contrib_type.query.count():
             del self.accepted_contrib_type
+        if not session.user.is_admin:
+            del self.new_track
 
     @property
     def split_data(self):
@@ -284,6 +288,9 @@ class AbstractJudgmentForm(AbstractJudgmentFormBase):
             kwargs.setdefault('accepted_contrib_type', abstract.submitted_contrib_type)
         if self.event.cfa.force_track_selection:
             inject_validators(self, 'accepted_track', [DataRequired()])
+        if session.user.is_admin:
+            inject_validators(self, 'accepted_track', [HiddenUnless('new_track', False)])
+            inject_validators(self, 'session', [HiddenUnless('new_track', False)])
         super().__init__(*args, **kwargs)
         self.duplicate_of.excluded_abstract_ids = {abstract.id}
         self.merged_into.excluded_abstract_ids = {abstract.id}
