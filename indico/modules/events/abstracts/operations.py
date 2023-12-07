@@ -24,6 +24,8 @@ from indico.modules.events.abstracts.models.reviews import AbstractAction, Abstr
 from indico.modules.events.abstracts.notifications import send_abstract_notifications
 from indico.modules.events.abstracts.notifications import send_abstract_comment
 from indico.modules.events.contributions.operations import create_contribution_from_abstract, delete_contribution
+from indico.modules.events.sessions.operations import create_session_from_abstract
+from indico.modules.events.tracks.operations import create_track_from_abstract
 from indico.modules.events.util import set_custom_fields
 from indico.modules.logs.models.entries import EventLogRealm, LogKind
 from indico.modules.logs.util import make_diff_log
@@ -209,9 +211,14 @@ def judge_abstract(abstract, abstract_data, judgment, judge, contrib_session=Non
     abstract.judgment_dt = now_utc()
     abstract.judgment_comment = abstract_data['judgment_comment']
     log_data = {'Judgment': orig_string(judgment.title)}
+    print("ops: %s" % abstract_data)
+    print("ops: %s" % judgment)
     if judgment == AbstractAction.accept:
         abstract.state = AbstractState.accepted
-        if abstract_data.get('use_review_track') and abstract.reviewed_for_tracks:
+        if abstract_data.get('new_track'):
+            session = create_session_from_abstract(abstract)
+            create_track_from_abstract(abstract, session)
+        elif abstract_data.get('use_review_track') and abstract.reviewed_for_tracks:
             abstract.accepted_track = next(iter(abstract.reviewed_for_tracks))
         else:
             abstract.accepted_track = abstract_data.get('accepted_track')

@@ -207,10 +207,10 @@ class AbstractReviewingSettingsForm(IndicoForm):
 class AbstractJudgmentFormBase(IndicoForm):
     """Form base class for abstract judgment operations."""
 
-    _order = ('judgment', 'accepted_track', 'accepted_contrib_type', 'session', 'duplicate_of', 'merged_into',
+    _order = ('judgment', 'new_track', 'accepted_track', 'accepted_contrib_type', 'session', 'duplicate_of', 'merged_into',
               'merge_persons', 'judgment_comment', 'send_notifications')
 
-    accepted_track = QuerySelectField(_('Track'), [HiddenUnless('judgment', AbstractAction.accept)],
+    accepted_track = QuerySelectField(_('Track'), [HiddenUnless('judgment', AbstractAction.accept), HiddenUnless('new_track', False)],
                                       get_label=lambda obj: obj.title_with_group,
                                       allow_blank=True, blank_text=_('Choose a track...'),
                                       description=_('The abstract will be accepted in this track'))
@@ -219,7 +219,7 @@ class AbstractJudgmentFormBase(IndicoForm):
                                              blank_text=_('You may choose a contribution type...'),
                                              description=_('The abstract will be converted '
                                                            'into a contribution of this type'))
-    session = QuerySelectField(_('Session'), [HiddenUnless('judgment', AbstractAction.accept)],
+    session = QuerySelectField(_('Session'), [HiddenUnless('judgment', AbstractAction.accept), HiddenUnless('new_track', False)],
                                get_label='title', allow_blank=True, blank_text=_('You may choose a session...'),
                                description=_('The generated contribution will be allocated in this session'))
     duplicate_of = AbstractField(_('Duplicate of'),
@@ -236,6 +236,10 @@ class AbstractJudgmentFormBase(IndicoForm):
                                                               'class': 'grow'})
     # TODO: show only if notifications apply?
     send_notifications = BooleanField(_('Send notifications to submitter'), default=True)
+
+    # TODO: maybe make it widget=SwitchWidget(), for that will need to find
+    # out why label didn't work
+    new_track = BooleanField(label=_('Create a track from the abstract'))
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
