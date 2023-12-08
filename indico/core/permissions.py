@@ -189,8 +189,8 @@ def update_read_permissions(obj, form):
         obj.update_principal(principal, read_access=False)
 
 
-def update_permissions(obj, form):
-    """Update the permissions of an object (a `ProtectionManagerMixin` instance), based on the corresponding WTForm."""
+def update_permissions_from_data(obj, data):
+    """Update the permissions of an object."""
     from indico.modules.categories import Category
     from indico.modules.events import Event
     from indico.util.user import principal_from_identifier
@@ -220,10 +220,14 @@ def update_permissions(obj, form):
             event_id=event_id,
             category_id=category_id,
         ): set(permissions)
-        for fossil, permissions in form.permissions.data
+        for fossil, permissions in data
     }
     update_principals_permissions(obj, current_principal_permissions, new_principal_permissions)
 
+
+def update_permissions(obj, form):
+    """Update the permissions of an object (a `ProtectionManagerMixin` instance), based on the corresponding WTForm."""
+    update_permissions_from_data(obj, form.permissions.data)
 
 def update_principals_permissions(obj, current, new):
     """
