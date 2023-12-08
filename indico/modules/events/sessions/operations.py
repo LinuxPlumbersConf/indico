@@ -9,12 +9,15 @@ from flask import session
 
 from indico.core import signals
 from indico.core.db import db
+from indico.core.permissions import FULL_ACCESS_PERMISSION, READ_ACCESS_PERMISSION
+from indico.core.permissions import update_permissions_from_data
 from indico.modules.events.models.events import EventType
 from indico.modules.events.sessions import COORDINATOR_PRIV_SETTINGS, COORDINATOR_PRIV_TITLES, logger, session_settings
 from indico.modules.events.sessions.models.blocks import SessionBlock
 from indico.modules.events.sessions.models.sessions import Session
 from indico.modules.logs.models.entries import EventLogRealm, LogKind
 from indico.modules.logs.util import make_diff_log
+from indico.modules.users.util import get_user_by_email
 from indico.util.i18n import orig_string
 
 
@@ -138,5 +141,29 @@ def create_session_from_abstract(abstract):
         'description': abstract.description,
     }
     session = create_session(event, session_data)
+
+    emails = [ abstract.submitter.email ]
+    emails.extend([a.email for a in abstract.primary_authors])
+    emails.extend([a.email for a in abstract.secondary_authors])
+
+    user_perms = []
+    for e in emails:
+        user = get_user_by_email(e)
+        if not user:
+            continue
+
+        user_data = {
+            'identifier': user.identifier,
+            'id': user.id,
+            'familyName': user.last_name,
+            'firstName': user.first_name,
+            'name': user.first_name + " " + user.last_name,
+            '_type': 'Avatar',
+        }
+        user_perms.append([user_data, [FULL_ACCESS_PERMISSION]])
+
+    update_permissions_from_data(session, user_perms)
+
     db.session.flush()
+
     return session
