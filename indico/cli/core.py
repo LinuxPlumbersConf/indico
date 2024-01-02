@@ -83,6 +83,10 @@ def maint():
     """Perform maintenance operations."""
 
 
+@cli.group(cls=LazyGroup, import_name='indico.cli.contributions:cli')
+def contributions():
+    """Manage Indico Contributions."""
+
 @cli.command(context_settings={'ignore_unknown_options': True, 'allow_extra_args': True}, add_help_option=False)
 @click.option('--watchman', is_flag=True, help='Run celery inside watchman auto-reloader')
 @click.option('--watchfiles', is_flag=True, help='Run celery inside watchfiles auto-reloader')
