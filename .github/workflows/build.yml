@@ -33,7 +33,7 @@ jobs:
         with:
           # prefer head commit over merge commit in case of PRs
           ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || '' }}
-      - uses: actions/setup-python@v4
+      - uses: actions/setup-python@v5
         name: Set up Python 🐍
         with:
           python-version: '3.11'
@@ -41,7 +41,7 @@ jobs:
           cache-dependency-path: |
             requirements.txt
             requirements.dev.txt
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         name: Setup Node
         with:
           node-version: 18.x
@@ -54,7 +54,7 @@ jobs:
         run: npm ci
       - name: Build wheel 🏗
         run: ./bin/maintenance/build-wheel.py indico --add-version-suffix
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         name: Upload build artifacts 📦
         with:
           name: indico-wheel
