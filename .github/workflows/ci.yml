@@ -24,21 +24,21 @@ jobs:
           - { name: '3.11', python: '3.11', tox: py311 }
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         id: cache-npm
         with:
           path: node_modules
           key: ${{ runner.os }}-npm-${{ hashFiles('package*.json') }}
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         if: steps.cache-npm.outputs.cache-hit != 'true'
         with:
           node-version: 18.x
@@ -62,7 +62,7 @@ jobs:
         run: echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
 
       - name: Cache pip
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: pip|${{ runner.os }}|${{ matrix.python }}|${{ hashFiles('requirements*.txt') }}
@@ -80,7 +80,7 @@ jobs:
         run: tar cf /tmp/env.tar .venv node_modules
 
       - name: Upload environment
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: environment-${{ matrix.name }}
           retention-days: 1
@@ -92,20 +92,20 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       # BEGIN common steps - edit all occurrences if needed!
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18.x
 
       - name: Download environment
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: environment-3.11
           path: /tmp
@@ -187,7 +187,7 @@ jobs:
       # https://github.com/actions/toolkit/issues/457
       - name: Get list of changed files
         if: github.event_name == 'pull_request' && (success() || failure())
-        uses: umani/changed-files@v4.0.1
+        uses: umani/changed-files@v4.2.0
         with:
           repo-token: ${{ github.token }}
           result-encoding: json
@@ -226,20 +226,20 @@ jobs:
 
     steps:
       # BEGIN common steps - edit all occurrences if needed!
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python }}
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18.x
 
       - name: Download environment
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: environment-${{ matrix.name }}
           path: /tmp
@@ -282,20 +282,20 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       # BEGIN common steps - edit all occurrences if needed!
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18.x
 
       - name: Download environment
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: environment-3.11
           path: /tmp

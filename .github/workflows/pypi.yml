@@ -15,8 +15,8 @@ jobs:
     name: Build package 📦
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         name: Set up Python 🐍
         with:
           python-version: '3.11'
@@ -28,7 +28,7 @@ jobs:
         run: python .github/utils/check_version.py "${GITHUB_REF#refs/tags/v}"
       - name: Extract changelog 📜
         run: python .github/utils/extract_changelog.py "${GITHUB_REF#refs/tags/v}" /tmp/changelog.md
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         name: Setup Node
         with:
           node-version: 18.x
@@ -41,13 +41,13 @@ jobs:
         run: npm ci
       - name: Build wheel 🏗
         run: ./bin/maintenance/build-wheel.py indico
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         name: Upload build artifacts 📦
         with:
           name: indico-wheel
           retention-days: 7
           path: ./dist
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         name: Store Markdown changelog 📜
         with:
           name: changelog
@@ -61,7 +61,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         name: Download build artifacts 📦
       - name: Create draft release 🐙
         run: >-
@@ -85,15 +85,15 @@ jobs:
       contents: write
       id-token: write
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
       # Try uploading to Test PyPI first, in case something fails.
       - name: Publish to Test PyPI 🧪
-        uses: pypa/gh-action-pypi-publish@v1.8.8
+        uses: pypa/gh-action-pypi-publish@v1.9.0
         with:
           repository-url: https://test.pypi.org/legacy/
           packages-dir: indico-wheel/
       - name: Publish to PyPI 🚀
-        uses: pypa/gh-action-pypi-publish@v1.8.8
+        uses: pypa/gh-action-pypi-publish@v1.9.0
         with:
           packages-dir: indico-wheel/
       - name: Publish GitHub release 🐙
