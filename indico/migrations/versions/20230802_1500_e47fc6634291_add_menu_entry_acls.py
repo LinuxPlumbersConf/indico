@@ -1,7 +1,7 @@
 """Add menu entry ACLs
 
 Revision ID: e47fc6634291
-Revises: aba7935f9226
+Revises: 5eda67ae5d99
 Create Date: 2023-03-06 09:05:08.848298
 """
 
@@ -15,7 +15,7 @@ from indico.core.db.sqlalchemy import PyIntEnum
 
 # revision identifiers, used by Alembic.
 revision = 'e47fc6634291'
-down_revision = 'aba7935f9226'
+down_revision = '5eda67ae5d99'
 branch_labels = None
 depends_on = None
 
