@@ -214,9 +214,9 @@ def judge_abstract(abstract, abstract_data, judgment, judge, contrib_session=Non
     log_data = {'Judgment': orig_string(judgment.title)}
     print("ops: %s" % abstract_data)
     print("ops: %s" % judgment)
-    if judgment == AbstractAction.accept:
+    if judgment == AbstractAction.accept or judgment == AbstractAction.new_track:
         abstract.state = AbstractState.accepted
-        if abstract_data.get('new_track'):
+        if judgment == AbstractAction.new_track:
             session = create_session_from_abstract(abstract)
             create_track_from_abstract(abstract, session)
         elif abstract_data.get('use_review_track') and abstract.reviewed_for_tracks:
