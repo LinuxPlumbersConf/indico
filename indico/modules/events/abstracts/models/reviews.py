@@ -16,13 +16,14 @@ from indico.util.string import format_repr
 
 
 class AbstractAction(RichIntEnum):
-    __titles__ = [None, _('Accept'), _('Reject'), _('Change track'), _('Mark as duplicate'), _('Merge')]
+    __titles__ = [None, _('Accept'), _('Reject'), _('Change track'), _('Mark as duplicate'), _('Merge'), _('Accept as a track')]
     __css_classes__ = [None, 'success', 'error', 'warning', 'strong', 'visited']
     accept = 1
     reject = 2
     change_tracks = 3
     mark_as_duplicate = 4
     merge = 5
+    new_track = 6
 
 
 class AbstractReview(ProposalReviewMixin, RenderModeMixin, db.Model):
