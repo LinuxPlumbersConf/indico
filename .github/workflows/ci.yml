@@ -29,7 +29,7 @@ jobs:
           - { name: '3.12', python: '3.12', python_version_var: 'PYTHON_VERSION_312' }
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/cache@v4
         id: cache-npm
@@ -99,7 +99,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       # BEGIN common steps - edit all occurrences if needed!
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -115,7 +115,7 @@ jobs:
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
       - name: Download environment
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: environment-3.12
           path: /tmp
@@ -241,7 +241,7 @@ jobs:
 
     steps:
       # BEGIN common steps - edit all occurrences if needed!
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -257,7 +257,7 @@ jobs:
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
       - name: Download environment
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: environment-${{ matrix.name }}
           path: /tmp
@@ -300,7 +300,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       # BEGIN common steps - edit all occurrences if needed!
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -316,7 +316,7 @@ jobs:
         run: curl -LsSf https://astral.sh/uv/install.sh | sh
 
       - name: Download environment
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           name: environment-3.12
           path: /tmp
