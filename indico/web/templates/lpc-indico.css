@@ -1,5 +1,5 @@
 /*
-    LPC 2023 stylesheet for Indico
+    LPC 2026 stylesheet for Indico
 */
 
 /* Since we are using an image for the banner, limiting the max width across all screens */
@@ -68,8 +68,15 @@ body {
 .confTitleBox {
     min-height: 90px;
     height: 40vh;
-    max-height: 200px;
-    background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2023/03/lpc23_banner_no_title.jpg);
+    min-height: 90px;
+    max-height: 225px;
+
+    /* background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2025/02/lpc25_banner_tokyo_title.png); */
+    /* background: transparent url(https://lpc.events/event/20/images/369-lpc26_banner_abstract_penguins_title.png); */
+    /* background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2026/02/LPC26_banner.jpg); */
+    background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2026/02/LPC26_banner-with-title_logo.jpg);
+    /* background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2024/02/lpc24_banner.png); */
+    /* background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2024/02/lpc24_banner_no_title.png); */
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -99,7 +106,8 @@ body {
     min-height: 90px;
     height: 40vh;
     max-height:200px;
-    background: transparent url(https://lpc.events/images/lpc-logo-square-2022-dropshadow.svg);
+    /* background: transparent url(https://lpc.events/images/lpc-logo-square-2022-dropshadow.svg); */
+    /* background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2026/02/LPC26_corner-logo.jpg); */
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
@@ -120,14 +128,16 @@ span.conference-title-link span {
     padding: 0;
     display: block;
     float: down;
-    height: 40vh;
+    height: 18vh;
     min-height: 90px;
     max-height:200px;
     color: transparent;
-    background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2023/03/lpc23_title.svg);
-    background-size: 85%;
+    /* background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2024/02/lpc24_title.svg); */
+    /* background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2024/02/LPC24_title_banner.png); */
+    /* background: transparent url(https://lpc.events/blog/current/wp-content/uploads/2026/02/LPC26_banner-title.png); */
+    background-size: 60%;
     background-repeat: no-repeat;
-    background-position-y: bottom;
+    background-position-y: 95%;
     background-position-x: 14vw;
 }
 
@@ -253,12 +263,12 @@ td.rightcol{padding-left: 3em;}
     The menu item when doing mouseover
 */
 #outer li a:hover {
-    background-color: #d79795;
+    background-color: #953300;
     color: white;
 }
 
 #outer li a:not(.no-link):hover {
-    background: #d79795;
+    background: #953300;
     color: white;
 }
 
@@ -295,7 +305,7 @@ td.rightcol{padding-left: 3em;}
 
 .menuConfTitle.selected > a, .menuConfMiddleCell.selected > a {
     color: white;
-    background-color: #c16260;
+    background-color: #af7d5c;
 }
 
 .menuConfSelected, .menuConfMiddleCell.selected {
@@ -322,7 +332,7 @@ li ul.inner li a {
 
 .support_box > h3 {
     color: #f6f6f6;
-    background-color: #c16260;
+    background-color: #953300;
     font-family: "Dosis";
     font-size: 1.3em;
 }
@@ -337,18 +347,22 @@ li ul.inner li a {
 }
 
 .conference-page header h2 {
-    color: #6a8a25;
+    color: #953300;
     padding-right: 5px;
     font-size: 2.5em;
     font-weight: 400;
 }
 
+.conference-page header h2 {
+    font-size: 2em;
+}
+
 a, .fake-link, .ui-widget-content a {
-    color: #c16260;
+    color: #af7d5c;
 }
 
 .ui-dialog-title {
-    color: #c16260;
+    color: #af7d5c;
     font-weight: 700;
 }
 
@@ -524,15 +538,15 @@ div.main-action-bar {
 }
 
 ul.steps li.completed .circle::before {
-    background-color: #c16260;
-    border-color: #c16260;
+    background-color: #af7d5c;
+    border-color: #af7d5c;
 }
 ul.steps li:first-child .horizontal-line {
-    background-color: #c16260;
+    background-color: #af7d5c;
 }
 
 ul.steps li.completed .text {
-    color: #c16260;
+    color: #af7d5c;
 }
 
 div.action-box.highlight {
@@ -604,44 +618,44 @@ span.lpctt {
     display: none;
 }
 
-@media only screen and (max-width: 48em) {
-	/* Force table to not be like tables anymore */
-	table.lpctt  {
-        display: table-row;
-	width: 95%;
-    }
-    table.lpctt thead {
-        display: none;
-    }
-    span.lpctt {
-	display: inline;
-    }
-    table.lpctt tbody, th, td, tr {
-		display: block;
-	}
+/* @media only screen and (max-width: 48em) { */
+/* 	/\* Force table to not be like tables anymore *\/ */
+/* 	table.lpctt  { */
+/*         display: table-row; */
+/* 	width: 95%; */
+/*     } */
+/*     table.lpctt thead { */
+/*         display: none; */
+/*     } */
+/*     span.lpctt { */
+/* 	display: inline; */
+/*     } */
+/*     table.lpctt tbody, th, td, tr { */
+/* 		display: block; */
+/* 	} */
 
-    tr.lpctthdr {
-	display: none;
-    }
+/*     tr.lpctthdr { */
+/* 	display: none; */
+/*     } */
 
-    table.lpctt td {
-	    /* Behave  like a "row" */
-	    border: none;
-	    position: relative;
-	    /* padding-left: 50%;*/
-	}
+/*     table.lpctt td { */
+/* 	    /\* Behave  like a "row" *\/ */
+/* 	    border: none; */
+/* 	    position: relative; */
+/* 	    /\* padding-left: 50%;*\/ */
+/* 	} */
 
-	table.lpctt td:before {
-		/* Now like a table header */
-		position: absolute;
-		/* Top/left values mimic padding */
-		top: 6px;
-		left: 6px;
-		width: 45%;
-		padding-right: 10px;
-		white-space: nowrap;
-	}
-}
+/* 	table.lpctt td:before { */
+/* 		/\* Now like a table header *\/ */
+/* 		position: absolute; */
+/* 		/\* Top/left values mimic padding *\/ */
+/* 		top: 6px; */
+/* 		left: 6px; */
+/* 		width: 45%; */
+/* 		padding-right: 10px; */
+/* 		white-space: nowrap; */
+/* 	} */
+/* } */
 
 
 /* ----------- Styles for general definitions across the page ----------- */
@@ -715,7 +729,7 @@ div.speaker-list.icon-user {
 }
 
 .contribution-list .contribution-row:hover, .contribution-list .track-review-row:hover, .track-review-list .contribution-row:hover, .track-review-list .track-review-row:hover {
-  border-color: #c16260;
+  border-color: #af7d5c;
 }
 
 .conference-page .page-content h3:first-child {
