@@ -8,7 +8,6 @@
                 {{- _render_contribution_row(timezone, contrib, with_session_info) -}}
             {% endfor %}
             {% for contrib in contributions | rejectattr('start_dt_display') %}
-            {{- _render_contribution_row(timezone, contrib, with_session_info) -}}
                 {{- _render_contribution_row(timezone, contrib, with_session_info) -}}
             {% endfor %}
         </ol>
