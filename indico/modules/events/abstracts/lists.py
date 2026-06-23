@@ -263,7 +263,7 @@ class AbstractListGeneratorDisplay(AbstractListGeneratorBase):
     def __init__(self, event, track):
         super().__init__(event)
         self.track = track
-        self.default_list_config['items'] = ('accepted_contrib_type', 'state')
+        self.default_list_config['items'] = ('accepted_contrib_type', 'state', 'submitter')
         items = {'submitted_contrib_type', 'submitter', 'accepted_contrib_type', 'state'}
         if self.track.can_convene(session.user):
             items.add('score')
