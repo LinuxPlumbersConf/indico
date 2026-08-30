@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-22.04
     if: github.event_name == 'push' || contains(github.event.pull_request.labels.*.name, 'build-wheel')
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           # prefer head commit over merge commit in case of PRs
           ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || '' }}
@@ -61,7 +61,7 @@ jobs:
         run: npm ci
       - name: Build wheel 🏗
         run: ./bin/maintenance/build-wheel.py indico --add-version-suffix
-      - uses: actions/upload-artifact@v6
+      - uses: actions/upload-artifact@v7
         name: Upload build artifacts 📦
         with:
           name: indico-wheel
